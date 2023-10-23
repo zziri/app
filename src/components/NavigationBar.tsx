@@ -1,20 +1,24 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
+import Link from "next/link";
 
 export default function NavigationBar() {
   return (
-    <>
-      <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#">i-am-groot</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="https://page.zziri.me">Blog</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-    </>
+    <nav className="navbar navbar-expand bg-body-tertiary">
+      <div className="container-fluid">
+        <div className="navbar-brand">i-am-groot</div>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" href="/">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" href="https://page.zziri.me">Blog</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 }
