@@ -21,7 +21,8 @@
     "react-bootstrap": "^2.9.1",
     "react-calendar": "^4.6.1",
     "react-datepicker": "^4.21.0",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.10",

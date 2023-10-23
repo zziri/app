@@ -1,15 +1,21 @@
 import { getMonth, getYear } from "date-fns";
-import { useEffect, useState } from "react";
+import { useEffect, useInsertionEffect, useState } from "react";
 import 'react-datepicker/dist/react-datepicker.css';
 import ko from 'date-fns/locale/ko';
 import DatePicker from 'react-datepicker';
 import { range } from 'lodash-es';
+import { useRecoilState } from "recoil";
+import { diffDayTargetDateState } from "@/atoms";
 
 export default function Calendar() {
   const now = new Date();
-  const [startDate, setStartDate] = useState<Date>(now);
-  const years = range(1990, getYear(now) + 1, 1);
+  const [targetDate, setTargetDate] = useRecoilState<Date>(diffDayTargetDateState);
+  const years = range(getYear(now), getYear(now) + 50, 1);
   const months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
+
+  useEffect(() => {
+    setTargetDate(now);
+  }, []);
 
   return (
     <DatePicker
@@ -61,10 +67,11 @@ export default function Calendar() {
           </button>
         </div>
       )}
-      selected={startDate}
+      selected={targetDate}
       dateFormat={"yyyy-MM-dd"}
       locale={ko}
-      onChange={(date: Date) => setStartDate(date)}
+      onChange={(date: Date) => setTargetDate
+        (date)}
       minDate={now}
     />
   );
