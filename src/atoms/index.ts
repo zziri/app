@@ -1,7 +1,8 @@
 import { atom } from "recoil";
+import { v1 } from "uuid";
 
 const diffDayTargetDateState = atom<Date>({
-  key: 'diffDayTargetDateState',
+  key: `diffDayTargetDateState_${v1()}`,
   default: new Date()
 });
 
