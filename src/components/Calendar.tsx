@@ -1,5 +1,5 @@
 import { getMonth, getYear } from "date-fns";
-import { useEffect, useInsertionEffect, useState } from "react";
+import { useEffect } from "react";
 import 'react-datepicker/dist/react-datepicker.css';
 import ko from 'date-fns/locale/ko';
 import DatePicker from 'react-datepicker';
@@ -18,61 +18,93 @@ export default function Calendar() {
   }, []);
 
   return (
-    <DatePicker
-      renderCustomHeader={({
-        date,
-        changeYear,
-        changeMonth,
-        decreaseMonth,
-        increaseMonth,
-        prevMonthButtonDisabled,
-        nextMonthButtonDisabled
-      }) => (
-        <div
-          style={{
-            margin: 10,
-            display: "flex",
-            justifyContent: "center"
-          }}
-        >
-          <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
-            {"<"}
-          </button>
-          <select
-            value={getYear(date)}
-            onChange={({ target: { value } }) => changeYear(Number(value))}
-          >
-            {years.map(option => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
+    <>
+      <div>
+        <span>기준 날짜를 선택해주세요</span>
+        <div>
+          <DatePicker
+            renderCustomHeader={({
+              date,
+              changeYear,
+              changeMonth,
+              decreaseMonth,
+              increaseMonth,
+              prevMonthButtonDisabled,
+              nextMonthButtonDisabled
+            }) => (
+              <div
+                style={{
+                  margin: 10,
+                  display: "flex",
+                  justifyContent: "center"
+                }}
+              >
+                <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
+                  {"<"}
+                </button>
+                <select
+                  value={getYear(date)}
+                  onChange={({ target: { value } }) => changeYear(Number(value))}
+                >
+                  {years.map(option => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
 
-          <select
-            value={months[getMonth(date)]}
-            onChange={({ target: { value } }) =>
-              changeMonth(months.indexOf(value))
-            }
-          >
-            {months.map(option => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
+                <select
+                  value={months[getMonth(date)]}
+                  onChange={({ target: { value } }) =>
+                    changeMonth(months.indexOf(value))
+                  }
+                >
+                  {months.map(option => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
 
-          <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
-            {">"}
-          </button>
+                <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
+                  {">"}
+                </button>
+              </div>
+            )}
+            selected={targetDate}
+            dateFormat={"yyyy-MM-dd"}
+            locale={ko}
+            onChange={(date: Date) => setTargetDate
+              (date)}
+            minDate={now}
+            popperPlacement="top-start"
+            customInput={<input />}
+          />
         </div>
-      )}
-      selected={targetDate}
-      dateFormat={"yyyy-MM-dd"}
-      locale={ko}
-      onChange={(date: Date) => setTargetDate
-        (date)}
-      minDate={now}
-    />
+      </div>
+
+      <style jsx>{`
+        div {
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        div span {
+          font-weight: bold;
+          color: blue;
+          padding-bottom: 0.75rem;
+        }
+        div div {
+          display: flex;
+          flex-direction: row;
+        }
+        input {
+          height: 2rem;
+          font-size: 1rem;
+        }
+      `}</style>
+    </>
   );
 }
