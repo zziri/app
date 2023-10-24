@@ -2,23 +2,40 @@ import Link from "next/link";
 
 export default function NavigationBar() {
   return (
-    <nav className="navbar navbar-expand bg-body-tertiary">
-      <div className="container-fluid">
-        <div className="navbar-brand">i-am-groot</div>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" href="/">Home</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="https://page.zziri.me">Blog</Link>
-            </li>
-          </ul>
-        </div>
+    <>
+      <div className="navbar">
+        <Link href={"/"} legacyBehavior>
+          <a className="item">홈</a>
+        </Link>
+        <Link href={"/calculator/d-day"} legacyBehavior>
+          <a className="item">계산기</a>
+        </Link>
+        <Link href={"https://page.zziri.me"} legacyBehavior>
+          <a className="item">블로그</a>
+        </Link>
       </div>
-    </nav>
+
+      <style jsx>{`
+        .navbar {
+          background-color: #333;
+          color: white;
+          padding: 0.5rem;
+          text-align: center;
+        }
+
+        .item {
+          color: white;
+          padding: 1rem 1.5rem;
+          text-decoration: none;
+          text-align: center;
+          display: inline-block;
+        }
+
+        .item:hover {
+          background-color: #ddd;
+          color: black;
+        }
+      `}</style>
+    </>
   );
 }
