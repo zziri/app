@@ -5,7 +5,6 @@ export default function ListGroup() {
     <>
       <ul className="list-group">
         <li><Link href={"/calculator/d-day"} legacyBehavior><a>디데이 계산기</a></Link></li>
-        <li><Link href={"/counter/letter"} legacyBehavior><a>글자 수 측정기</a></Link></li>
       </ul>
 
       <style jsx>{`

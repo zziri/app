@@ -62,14 +62,14 @@ export default function DiffDayOutput() {
         }
         li:first-child {
           border-top: 0.1rem solid #ccc;
-          border-top-left-radius: 0.25rem;
-          border-top-right-radius: 0.25rem;
+          border-top-left-radius: 0.5rem;
+          border-top-right-radius: 0.5rem;
         }
         li:last-child {
           border-top: 0.1rem solid #ccc;
           border-bottom: 0.1rem solid #ccc;
-          border-bottom-left-radius: 0.25rem;
-          border-bottom-right-radius: 0.25rem;
+          border-bottom-left-radius: 0.5rem;
+          border-bottom-right-radius: 0.5rem;
         }
         .bold {
           font-weight: bold;

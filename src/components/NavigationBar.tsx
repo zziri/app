@@ -7,9 +7,6 @@ export default function NavigationBar() {
         <Link href={"/"} legacyBehavior>
           <a className="item">홈</a>
         </Link>
-        <Link href={"/calculator/d-day"} legacyBehavior>
-          <a className="item">계산기</a>
-        </Link>
         <Link href={"https://page.zziri.me"} legacyBehavior>
           <a className="item">블로그</a>
         </Link>

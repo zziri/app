@@ -6,11 +6,12 @@ import Title from '@/components/Title';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const title = '유용한 도구 모음';
   return (
     <>
-      <SeoHead title='홈 | 유용한 도구' description='홈 페이지입니다.' />
+      <SeoHead title={title} description='홈 페이지입니다.' />
       <div>
-        <Title title='유용한 도구'/>
+        <Title title={title}/>
         <ListGroup />
       </div>
 
