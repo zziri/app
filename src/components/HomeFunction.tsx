@@ -1,11 +1,13 @@
 import Link from "next/link";
 
-export default function ListGroup() {
+export default function HomeFunction() {
   return (
     <>
-      <ul className="list-group">
-        <li><Link href={"/calculator/d-day"} legacyBehavior><a>디데이 계산기</a></Link></li>
-      </ul>
+      <div>
+        <ul className="list-group">
+          <li><Link href={"/calculator/d-day"} legacyBehavior><a>디데이 계산기</a></Link></li>
+        </ul>
+      </div>
 
       <style jsx>{`
         .list-group {

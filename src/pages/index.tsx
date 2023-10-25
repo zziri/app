@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 import SeoHead from '@/components/SeoHead';
-import ListGroup from '@/components/ListGroup';
 import Title from '@/components/Title';
+import HomeFunction from '@/components/HomeFunction';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,10 +10,8 @@ export default function Home() {
   return (
     <>
       <SeoHead title={title} description='홈 페이지입니다.' />
-      <div>
-        <Title title={title}/>
-        <ListGroup />
-      </div>
+      <Title title={title}/>
+      <HomeFunction />
 
       <style jsx>{`
         div {

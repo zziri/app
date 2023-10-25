@@ -5,15 +5,15 @@ import { useRecoilValue } from "recoil";
 export default function DiffDayOutput() {
   const diffDayTargetDate = useRecoilValue<Date>(diffDayTargetDateState);
 
-  const setValues = {
+  const timeValue = {
     hours: 0,
     minutes: 0,
     seconds: 0,
     milliseconds: 0
   }
 
-  const target = set(diffDayTargetDate, setValues);
-  const now = set(new Date(), setValues);
+  const target = set(diffDayTargetDate, timeValue);
+  const now = set(new Date(), timeValue);
 
   const dayDiff = differenceInDays(target, now);
 
