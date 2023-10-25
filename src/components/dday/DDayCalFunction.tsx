@@ -1,5 +1,5 @@
-import DiffDayOutput from "@/components/DiffDayOutput";
-import SelectDate from "@/components/SelectDate";
+import DiffDayOutput from "@/components/dday/DiffDayOutput";
+import SelectDate from "@/components/dday/SelectDate";
 
 export default function DDayCalFunction() {
   return (
