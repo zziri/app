@@ -7,8 +7,14 @@ export default function Description({ content }: DescriptionProps) {
   return (
     <>
       <div>
-        <p>{content}</p>
+        <article>{content}</article>
       </div>
+
+      <style jsx>{`
+        article {
+          line-height: 150%;
+        }
+      `}</style>
     </>
   );
 }

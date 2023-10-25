@@ -22,16 +22,16 @@ export default function NavigationBar() {
 
         .item {
           color: white;
-          padding: 1rem 1.5rem;
+          padding: 0.75rem 1.5rem;
           text-decoration: none;
           text-align: center;
           display: inline-block;
         }
 
-        .item:hover {
+        {/* .item:hover {
           background-color: #ddd;
           color: black;
-        }
+        } */}
       `}</style>
     </>
   );

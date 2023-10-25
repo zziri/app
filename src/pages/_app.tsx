@@ -1,4 +1,4 @@
-import NavigationBar from '@/components/NavigationBar';
+import NavigationBar from '@/components/common/NavigationBar';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import '@/styles/globals.css';
