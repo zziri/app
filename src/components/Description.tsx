@@ -1,9 +1,9 @@
 
-interface ArticleProps {
+interface DescriptionProps {
   content: string;
 }
 
-export default function Article({ content }: ArticleProps) {
+export default function Description({ content }: DescriptionProps) {
   return (
     <>
       <div>

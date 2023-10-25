@@ -1,6 +1,5 @@
-import Article from "@/components/Article";
-import DiffDayOutput from "@/components/DiffDayOutput";
-import SelectDate from "@/components/SelectDate";
+import DDayCalFunction from "@/components/DDayCalFunction";
+import Description from "@/components/Description";
 import SeoHead from "@/components/SeoHead";
 import Title from "@/components/Title";
 import 'styled-jsx';
@@ -15,11 +14,8 @@ export default function DDayCal() {
         title='D-day 계산기 | 디데이 계산기'
         description={description} />
       <Title title="D-day 계산기"/>
-      <Article content={description}/>
-      <div>
-        <DiffDayOutput />
-        <SelectDate />
-      </div>
+      <Description content={description} />
+      <DDayCalFunction />
     </>
   );
 }
