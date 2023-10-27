@@ -37,6 +37,7 @@ export default function SeoArticle({ list }: SeoArticleProps) {
       <style jsx>{`
         .subtitle h2 {
           margin: 0;
+          padding-top: 2rem;
         }
         .article {
           position: relative;
@@ -53,8 +54,8 @@ export default function SeoArticle({ list }: SeoArticleProps) {
         }
         .image {
           position: relative;
-          width: 10rem;
-          height: 10rem;
+          width: 15rem;
+          height: 15rem;
         }
         .image-box {
           display: flex;

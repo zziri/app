@@ -40,7 +40,7 @@ export default function DiffDayOutput() {
           <span>{format(now, 'yyyy년 MM월 dd일')}</span>
         </li>
         <li>
-          <span>선택된 날짜</span>
+          <span>이벤트 날짜</span>
           <span>{format(diffDayTargetDate, 'yyyy년 MM월 dd일')}</span>
         </li>
       </ul>
