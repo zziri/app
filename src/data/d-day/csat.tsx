@@ -1,5 +1,4 @@
 import Article from "@/types/Article";
-import csatImage from '/public/images/csat.png';
 
 const scheduleMap = new Map<string, Date>([
   ['2023', new Date('2022-11-17')],
@@ -22,8 +21,8 @@ const dDayCsatArticleList: Array<Article> = [
         </article>
       </>
     ),
-    imageSrc: csatImage,
-    imageAlt: 'dd'
+    imageSrc: null,
+    imageAlt: null
   },
   {
     subtitle: '수험생 필수 확인 사항',
