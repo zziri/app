@@ -7,7 +7,7 @@ import { SetterOrUpdater } from 'recoil';
 interface CustomDatePickerProps {
   minDate: Date,
   date: Date,
-  setDate: SetterOrUpdater<Date>
+  setDate: SetterOrUpdater<Date>,
 }
 
 export default function CustomDatePicker({ minDate, date, setDate }: CustomDatePickerProps) {

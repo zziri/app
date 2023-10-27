@@ -1,22 +1,17 @@
-import { useEffect } from "react";
 import 'react-datepicker/dist/react-datepicker.css';
 import { useRecoilState } from "recoil";
 import { diffDayTargetDateState } from "@/atoms";
 import CustomDatePicker from "./CustomDatePicker";
 
 export default function SelectDate() {
-  const now = new Date();
+  const minDate = new Date('1990-01-01');
   const [targetDate, setTargetDate] = useRecoilState<Date>(diffDayTargetDateState);
-
-  useEffect(() => {
-    setTargetDate(now);
-  }, []);
 
   return (
     <>
       <div>
         <span>날짜를 선택해주세요</span>
-        <CustomDatePicker minDate={now} date={targetDate} setDate={setTargetDate} />
+        <CustomDatePicker minDate={minDate} date={targetDate} setDate={setTargetDate} />
       </div>
 
       <style jsx>{`

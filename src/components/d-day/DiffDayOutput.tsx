@@ -17,20 +17,31 @@ export default function DiffDayOutput() {
 
   const dayDiff = differenceInDays(target, now);
 
+  /**
+   * 디데이 기준이므로 양일때 '-', 음일때 '+' 반대
+   */
+  function getSign(value: number) {
+    return value >= 0 ? '-' : '+';
+  }
+
+  function getColor(value: number) {
+    return value >= 0 ? 'red' : 'blue';
+  }
+
   return (
     <>
     <ul className="list-group">
         <li>
-          <span>오늘 날짜</span>
+          <span>D-day</span>
+          <span className={`bold ${getColor(dayDiff)}`}>D{getSign(dayDiff)}{Math.abs(dayDiff)}</span>
+        </li>
+        <li>
+          <span>기준 날짜</span>
           <span>{format(now, 'yyyy년 MM월 dd일')}</span>
         </li>
         <li>
-          <span>선택한 날짜</span>
+          <span>선택된 날짜</span>
           <span>{format(diffDayTargetDate, 'yyyy년 MM월 dd일')}</span>
-        </li>
-        <li>
-          <span>남은 일수</span>
-          <span className="bold">D-{dayDiff}</span>
         </li>
       </ul>
 
@@ -73,6 +84,12 @@ export default function DiffDayOutput() {
         }
         .bold {
           font-weight: bold;
+        }
+        .red {
+          color: red;
+        }
+        .blue {
+          color: blue;
         }
       `}</style>
     </>
