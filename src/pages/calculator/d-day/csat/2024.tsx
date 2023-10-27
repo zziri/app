@@ -25,16 +25,17 @@ function validYear(year: string) {
 
 export default function CountDownDaysCSAT() {
   const router = useRouter();
-  const year = toString(router.query.year) || defaultYear;
+  // const year = toString(router.query.year) || defaultYear;
+  const year = '2024';
   const [targetDate, setTargetDate] = useRecoilState<Date>(diffDayTargetDateState);
 
   useEffect(() => {
-    if (!validYear(year)) {
-      router.push(router.pathname.replace('[year]', defaultYear));
-    }
+    // if (!validYear(year)) {
+    //   router.push(router.pathname.replace('[year]', defaultYear));
+    // }
     const newTargetDate = scheduleMap.get(year) || targetDate;
     setTargetDate(newTargetDate);
-  }, [year]);
+  }, []);
 
   return (
     <>
