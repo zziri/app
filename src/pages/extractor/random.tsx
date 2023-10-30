@@ -4,6 +4,7 @@ import SeoArticle from "@/components/common/SeoArticle";
 import SeoHead from "@/components/common/SeoHead";
 import Title from "@/components/common/Title";
 import RandomExtractorFunction from "@/components/extractor/random/RandomExtractorFunction";
+import { randomArticleList } from "@/data/extractor/randomData";
 
 export default function RandomExtractorPage() {
   const title = '랜덤 숫자 뽑기';
@@ -19,8 +20,7 @@ export default function RandomExtractorPage() {
       <Description content={description} />
       <EmptyDiv height={"2rem"} />
       <RandomExtractorFunction />
-      <EmptyDiv height={"5rem"} />
-      <SeoArticle list={[]}/>
+      <SeoArticle list={randomArticleList}/>
     </>
   );
 }

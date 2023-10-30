@@ -40,7 +40,7 @@ export default function RandomExtractorFunction() {
         <div className="input count">
             <span>갯수:</span>
             <input type="number" value={count} onChange={onChangeCount}/>
-            <button onClick={onClickExtract}>추출하기</button>
+            <button onClick={onClickExtract}>뽑기</button>
         </div>
         <div className="result">
           <span>
@@ -70,9 +70,10 @@ export default function RandomExtractorFunction() {
         }
         .result span {
           font-size: 2rem;
+          font-weight: bold;
         }
         input {
-          max-width: 4rem;
+          max-width: 3.5rem;
           height: 1rem;
           border-radius: 0.5rem;
           border-width: 0.1rem;
@@ -84,6 +85,7 @@ export default function RandomExtractorFunction() {
           border-radius: 0.75rem;
           padding: 0.5rem;
           text-align: center;
+          font-weight: bold;
         }
       `}</style>
     </>
