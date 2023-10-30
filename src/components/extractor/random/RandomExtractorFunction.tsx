@@ -38,7 +38,7 @@ export default function RandomExtractorFunction() {
           <input type="number" onChange={onChangeEnd} value={end} />
         </div>
         <div className="input count">
-            <span>갯수:</span>
+            <span>개수:</span>
             <input type="number" value={count} onChange={onChangeCount}/>
             <button onClick={onClickExtract}>뽑기</button>
         </div>
