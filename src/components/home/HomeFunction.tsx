@@ -7,14 +7,43 @@ function getDefaultCsatYear() {
   return toString(getYear(now) + 1);
 }
 
+interface AnchorProps {
+  href: string;
+  text: string;
+}
+
+function Anchor({ href, text }: AnchorProps) {
+  return (
+    <>
+      <Link href={href} legacyBehavior>
+        <a>{text}</a>
+      </Link>
+
+      <style jsx>{`
+        a {
+          color: black;
+          padding: 1rem 1.5rem;
+          text-decoration: none;
+          text-align: center;
+          display: inline-block;
+        }
+      `}</style>
+    </>
+  );
+}
+
 export default function HomeFunction() {
   const defaultCsatYear = getDefaultCsatYear();
   return (
     <>
       <div>
         <ul className="list-group">
-          <li><Link href={"/calculator/d-day"} legacyBehavior><a>디데이 계산기</a></Link></li>
-          <li><Link href={`/calculator/d-day/csat/${defaultCsatYear}`} legacyBehavior><a>{defaultCsatYear}학년도 수능 디데이</a></Link></li>
+          <li>
+            <Anchor href={'/calculator/d-day'} text='디데이 계산기' />
+          </li>
+          <li>
+            <Anchor href={`/calculator/d-day/csat/${defaultCsatYear}`} text={`${defaultCsatYear}학년도 수능 디데이`} />
+          </li>
         </ul>
       </div>
 
@@ -34,13 +63,6 @@ export default function HomeFunction() {
         }
         .list-group li:last-child {
           border-bottom: none;
-        }
-        a {
-          color: black;
-          padding: 1rem 1.5rem;
-          text-decoration: none;
-          text-align: center;
-          display: inline-block;
         }
       `}</style>
     </>
