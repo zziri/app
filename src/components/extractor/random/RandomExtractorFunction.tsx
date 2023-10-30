@@ -1,28 +1,89 @@
+import { isEmpty, range, shuffle, slice } from "lodash-es";
+import { ChangeEvent, useState } from "react";
 
 export default function RandomExtractorFunction() {
+  const [start, setStart] = useState<number>(1);
+  const [end, setEnd] = useState<number>(45);
+  const [count, setCount] = useState<number>(6);
+  const [list, setList] = useState<Array<number>>([]);
+
+  function onChangeStart(e: ChangeEvent<HTMLInputElement>) {
+    setStart(Number(e.target.value));
+  }
+
+  function onChangeEnd(e: ChangeEvent<HTMLInputElement>) {
+    setEnd(Number(e.target.value));
+  }
+
+  function onClickExtract(e: any) {
+    e.preventDefault();
+
+    const rangeList = range(start, end + 1);
+    const shuffled = shuffle(rangeList);
+    const sliced = slice(shuffled, 0, count);
+    setList(sliced);
+  }
+
+  function onChangeCount(e: any) {
+    setCount(e.target.value);
+  }
+
   return (
     <>
-      <div>
-        <div>
-          <div className="input">
-            <div>
-              <span title="숫자 범위 (Range)">숫자 범위</span>: <input type="number" size={6} id="startNUM" value="1" title="시작 값 (Begin)"/> ~ <input type="number" size={6} id="endNUM" value="45" title="끝 값 (End)" />
-            </div>
-          </div>
+      <div className="container">
+        <div className="input range">
+          <span>숫자 범위: </span>
+          <input type="number" onChange={onChangeStart} value={start} />
+          <span> ~ </span>
+          <input type="number" onChange={onChangeEnd} value={end} />
         </div>
-        <div className="input">
-          <div>
-            <span title="추출 숫자의 갯수 (Count)">추출 숫자의 갯수</span>: <input type="number" size={6} id="selectNum" value="6" title="추출 숫자가 너무 큰 경우 오래 기다려야 할 수 있습니다."/>&nbsp;<input type="submit" id="calcButton" value="추첨하기" title="누르면 추첨합니다. (Submit)" />
-          </div>
+        <div className="input count">
+            <span>갯수:</span>
+            <input type="number" value={count} onChange={onChangeCount}/>
+            <button onClick={onClickExtract}>추출하기</button>
         </div>
-        <div>결과</div>
+        <div className="result">
+          <span>
+            {!isEmpty(list) && list.map((value, index) => {
+              const suffix = (list.length - 1 === index) ? '' : ', ';
+              return `${value}${suffix}`;
+            })}
+          </span>
+        </div>
       </div>
       <style jsx>{`
+        .container * {
+          font-size: 1rem;
+        }
         div {
           {/* border: solid; */}
         }
         .input {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
           padding: 1rem;
+          gap: 0.5rem;
+        }
+        .result {
+          padding: 1rem;
+        }
+        .result span {
+          font-size: 2rem;
+        }
+        input {
+          max-width: 4rem;
+          height: 1rem;
+          border-radius: 0.5rem;
+          border-width: 0.1rem;
+          padding-left: 1rem;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+        }
+        button {
+          border-radius: 0.75rem;
+          padding: 0.5rem;
+          text-align: center;
         }
       `}</style>
     </>

@@ -44,6 +44,9 @@ export default function HomeFunction() {
           <li>
             <Anchor href={`/calculator/d-day/csat/${defaultCsatYear}`} text={`${defaultCsatYear}학년도 수능 디데이`} />
           </li>
+          <li>
+            <Anchor href={'/extractor/random'} text={'랜덤 숫자 뽑기'} />
+          </li>
         </ul>
       </div>
 
