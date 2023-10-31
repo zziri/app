@@ -15,7 +15,7 @@ function getRandomString(num: number) {
 
 export default function PasswordExtractorFunction() {
   const [password, setPassword] = useState<string>('');
-  const [length, setLength] = useState<number>(8);
+  const [length, setLength] = useState<number>(10);
 
   function refreshPassword(len: number) {
     const randomString = getRandomString(len);

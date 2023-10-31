@@ -1,14 +1,16 @@
 import Article from "@/types/Article";
 
-const randomArticleList: Array<Article> = [
+const passwordArticleList: Array<Article> = [
   {
-    subtitle: '사용법',
+    subtitle: '강력한 비밀번호를 만드는 방법',
     contents: (
       <>
         <article>
-          숫자의 범위는 무작위로 숫자를 뽑은 결과에 나올 수 있는 숫자들의 범위를 뜻합니다. 원하는 숫자 범위를 설정해 주세요.
+          비밀번호 길이를 Range Bar를 움직이거나 직접 입력하면 비밀번호가 생성됩니다. 비밀번호가 길수록 더 안전합니다. 10자 이상의 비밀번호를 만들어보세요.
           <br /><br />
-          개수는 무작위로 뽑을 숫자의 개수를 의미합니다. 10으로 설정하면 숫자 범위 내에서 최대 10개의 숫자를 무작위로 선택합니다. 뽑기 버튼을 눌러서 숫자를 뽑을 수 있습니다.
+          비밀번호가 복잡할수록 강력하고 안전합니다. 이 패스워드 생성기는 랜덤으로 복잡한 비밀번호를 만들어줍니다.
+          <br /><br />
+          계정마다 비밀번호가 다른 것이 좋습니다. 비밀번호를 공통화하기보다는 계정마다 고유한 비밀번호를 만들어보세요.
         </article>
       </>
     ),
@@ -17,4 +19,4 @@ const randomArticleList: Array<Article> = [
   },
 ]
 
-export { randomArticleList };
+export { passwordArticleList };
