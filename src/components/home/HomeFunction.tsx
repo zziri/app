@@ -47,6 +47,9 @@ export default function HomeFunction() {
           <li>
             <Anchor href={'/extractor/random'} text={'랜덤 숫자 뽑기'} />
           </li>
+          <li>
+            <Anchor href={'/extractor/password'} text={'랜덤 비밀번호 생성기'} />
+          </li>
         </ul>
       </div>
 

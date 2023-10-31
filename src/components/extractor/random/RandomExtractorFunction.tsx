@@ -51,12 +51,10 @@ export default function RandomExtractorFunction() {
           </span>
         </div>
       </div>
+
       <style jsx>{`
         .container * {
           font-size: 1rem;
-        }
-        div {
-          {/* border: solid; */}
         }
         .input {
           display: flex;
