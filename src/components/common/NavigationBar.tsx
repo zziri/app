@@ -3,35 +3,31 @@ import Link from "next/link";
 export default function NavigationBar() {
   return (
     <>
-      <div className="navbar">
+      <div className="nav-bar">
         <Link href={"/"} legacyBehavior>
-          <a className="item">홈</a>
+          <a className="link-item">홈</a>
         </Link>
         <Link href={"https://page.zziri.me"} legacyBehavior>
-          <a className="item">블로그</a>
+          <a className="link-item">블로그</a>
         </Link>
       </div>
 
       <style jsx>{`
-        .navbar {
+        .nav-bar {
           background-color: #333;
           color: white;
           padding: 0.5rem;
           text-align: center;
         }
 
-        .item {
+        .link-item {
           color: white;
-          padding: 0.75rem 1.5rem;
+          padding: 0.5rem 1.5rem;
           text-decoration: none;
           text-align: center;
           display: inline-block;
+          font-size: 1rem;
         }
-
-        {/* .item:hover {
-          background-color: #ddd;
-          color: black;
-        } */}
       `}</style>
     </>
   );
