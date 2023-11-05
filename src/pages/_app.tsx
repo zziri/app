@@ -30,6 +30,10 @@ export default function App({ Component, pageProps }: AppProps) {
           max-width: 30rem;
           display: flex;
           flex-direction: column;
+          gap: 1rem;
+        }
+        div {
+          {/* border: solid; */}
         }
       `}</style>
     </>
