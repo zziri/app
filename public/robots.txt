@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://app.zziri.me
+
+# Sitemaps
+Sitemap: https://app.zziri.me/sitemap.xml
