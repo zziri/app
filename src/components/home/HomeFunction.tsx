@@ -22,10 +22,10 @@ function Anchor({ href, text }: AnchorProps) {
       <style jsx>{`
         a {
           color: black;
-          padding: 1rem 1.5rem;
           text-decoration: none;
           text-align: center;
           display: inline-block;
+          padding: 1rem 1.5rem;
         }
       `}</style>
     </>
@@ -36,38 +36,35 @@ export default function HomeFunction() {
   const defaultCsatYear = getDefaultCsatYear();
   return (
     <>
-      <div>
-        <ul className="list-group">
-          <li>
-            <Anchor href={'/calculator/d-day'} text='디데이 계산기' />
-          </li>
-          <li>
+      <div className="home">
+        <div className="link-item">
+          <Anchor href={'/calculator/d-day'} text='디데이 계산기' />
+        </div>
+        <div className="link-item">
             <Anchor href={`/calculator/d-day/csat/${defaultCsatYear}`} text={`${defaultCsatYear}학년도 수능 디데이`} />
-          </li>
-          <li>
+        </div>
+        <div className="link-item">
             <Anchor href={'/extractor/random'} text={'랜덤 숫자 뽑기'} />
-          </li>
-          <li>
+        </div>
+        <div className="link-item">
             <Anchor href={'/extractor/password'} text={'랜덤 비밀번호 생성기'} />
-          </li>
-        </ul>
+        </div>
+        <div className="link-item">
+            <Anchor href={'/zodiac/sign/age/dragon/2024'} text={'2024년도 용띠 나이'} />
+        </div>
       </div>
 
       <style jsx>{`
-        .list-group {
-          list-style: none;
-          padding: 0;
-          margin: 0;
+        div {
+          {/* border: solid; */}
         }
-        .list-group li {
-          padding: 0.5rem;
-          height: 2rem;
-          border-bottom: 0.1rem solid #ccc;
+        .link-item {
           display: flex;
-          flex-direction: row;
           align-items: center;
+          min-height: 3rem;
+          border-bottom: 0.1rem solid #ccc;
         }
-        .list-group li:last-child {
+        .link-item:last-child {
           border-bottom: none;
         }
       `}</style>

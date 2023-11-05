@@ -2,21 +2,22 @@ import NavigationBar from '@/components/common/NavigationBar';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import '@/styles/globals.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <NavigationBar />
       <RecoilRoot>
-        <div className='body'>
-          <div className='main'>
+        <div className='app-body'>
+          <div className='app-main'>
             <Component {...pageProps} />
           </div>
         </div>
       </RecoilRoot>
 
-      <style jsx>{`
-        .body {
+      <style jsx global>{`
+        .app-body {
           padding: 1rem;
           margin: 0;
           display: flex;
@@ -24,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
           justify-content: center;
           align-items: center;
         }
-        .main {
+        .app-main {
           width: 100%;
           max-width: 30rem;
           display: flex;

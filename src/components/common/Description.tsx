@@ -13,6 +13,7 @@ export default function Description({ content }: DescriptionProps) {
       <style jsx>{`
         article {
           line-height: 150%;
+          font-size: 1.2rem;
         }
       `}</style>
     </>
