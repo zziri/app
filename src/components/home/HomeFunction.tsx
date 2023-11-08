@@ -50,7 +50,7 @@ export default function HomeFunction() {
             <Anchor href={'/extractor/password'} text={'랜덤 비밀번호 생성기'} />
         </div>
         <div className="link-item">
-            <Anchor href={'/zodiac/sign/age/dragon/2024'} text={'2024년도 용띠 나이'} />
+            <Anchor href={'/zodiac/sign/age'} text={'올해 띠별 나이'} />
         </div>
       </div>
 

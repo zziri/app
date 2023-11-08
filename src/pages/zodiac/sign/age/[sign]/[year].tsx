@@ -1,12 +1,19 @@
 import ZodiacSignAgePage from "@/components/zodiac/sign/age/ZodiacSignAgePage";
+import { zodiacSignList } from "@/data/zodiac/sign/zodiacSignData";
+import { getYear } from "date-fns";
+import { flatMap, range, toString } from "lodash-es";
 import { GetStaticPaths, GetStaticPropsContext, NextPage } from "next/types";
 
+const now = new Date();
+const currentYear = getYear(now);
+const serviceYearList = range(currentYear - 1, currentYear + 2);
+
 export const getStaticPaths: GetStaticPaths = async function () {
-  const paths = [
-    {
-      params: { year: '2024', sign: 'dragon' }
-    },
-  ];
+  const paths = flatMap(serviceYearList, (year) => {
+    return zodiacSignList.map(sign => {
+      return { params: { year: toString(year), sign } };
+    })
+  });
 
   return {
     paths,

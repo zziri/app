@@ -17,6 +17,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </RecoilRoot>
 
       <style jsx global>{`
+        body {
+          background-color: #EFF6FF;
+        }
         .app-body {
           padding: 1rem;
           margin: 0;

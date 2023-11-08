@@ -2,7 +2,8 @@ import Description from "@/components/common/Description";
 import EmptyDiv from "@/components/common/EmptyDiv";
 import SeoHead from "@/components/common/SeoHead";
 import Title from "@/components/common/Title";
-import { toString, isEmpty, range, isNil } from "lodash-es";
+import { zodiacBaseYear, zodiacSignKorean } from "@/data/zodiac/sign/zodiacSignData";
+import { range } from "lodash-es";
 
 interface TableRow {
   year: number;
@@ -51,11 +52,15 @@ function ZodiacSignAgeTable({ rowList }: TableProps) {
       </div>
 
       <style jsx>{`
+        * {
+          background-color: transparent !important;
+        }
         div {
           padding: 1rem 0;
         }
         table {
           margin: 0;
+          font-size: 1.2rem;
         }
         * {
           text-align: center;
@@ -66,11 +71,11 @@ function ZodiacSignAgeTable({ rowList }: TableProps) {
 }
 
 function getKoreanSign(sign: string) {
-  return '용';
+  return zodiacSignKorean.get(sign) || '개';
 }
 
 function getBaseYear(sign: string) {
-  return 1904;
+  return zodiacBaseYear.get(sign) || 1910;
 }
 
 interface PageProps {
