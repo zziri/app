@@ -1,5 +1,4 @@
-import { zodiacSignKorean, zodiacSignList } from "@/data/zodiac/sign/zodiacSignData";
-import { getYear } from "date-fns";
+import { serviceYearList, zodiacSignKorean, zodiacSignList } from "@/data/zodiac/sign/zodiacSignData";
 import Link from "next/link";
 
 interface BasicLinkProps {
@@ -18,6 +17,7 @@ function BasicLink({ href, text }: BasicLinkProps) {
 
       <style jsx>{`
         .link-container {
+          flex: 1;
           display: flex;
           justify-content: center;
         }
@@ -30,10 +30,11 @@ function BasicLink({ href, text }: BasicLinkProps) {
   );
 }
 
-export default function ZodiacSignAgeHomeFunction() {
-  const now = new Date();
-  const year = getYear(now);
+interface Props {
+  year: number;
+}
 
+export default function ZodiacSignAgeHomeFunction({ year }: Props) {
   return (
     <>
       <div className="root">
@@ -48,14 +49,31 @@ export default function ZodiacSignAgeHomeFunction() {
             );
           })}
         </div>
-        <div>이전 년도 다음 년도 링크 영역</div>
+        <div className="other-year-container">
+          {serviceYearList
+            .filter(y => y !== year)
+            .map(y => {
+              const href = `/zodiac/sign/age/home/${y}`;
+              return <BasicLink href={href} text={`${y}년 띠별 나이`} key={href} />
+            })}
+        </div>
       </div>
 
       <style jsx>{`
+        .root {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
         .link-group {
           display: flex;
           flex-direction: column;
           gap: 0.25rem;
+        }
+        .other-year-container {
+          display: flex;
+          flex-direction: row;
+          gap: 0.5rem;
         }
       `}</style>
     </>

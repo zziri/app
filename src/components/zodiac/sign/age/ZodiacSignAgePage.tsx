@@ -96,9 +96,8 @@ export default function ZodiacSignAgePage({ year, sign }: PageProps) {
     <>
       <SeoHead title={title} description={description} />
       <Title title={title} />
-      <ZodiacSignAgeTable rowList={rowList}/>
-      <EmptyDiv height={'2rem'}/>
       <Description content={description} />
+      <ZodiacSignAgeTable rowList={rowList}/>
     </>
   );
 }

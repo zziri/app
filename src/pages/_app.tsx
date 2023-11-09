@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <style jsx global>{`
         body {
-          background-color: #EFF6FF;
+          {/* background-color: #EFF6FF; */}
         }
         .app-body {
           padding: 1rem;

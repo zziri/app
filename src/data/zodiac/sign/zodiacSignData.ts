@@ -1,4 +1,6 @@
-import { zip } from "lodash-es"
+import { currentYear } from "@/data/common/commonData";
+import { getYear } from "date-fns";
+import { range, zip } from "lodash-es"
 
 const zodiacSignList = [
   'rat',
@@ -47,9 +49,12 @@ const zodiacSignKoreanList = [
 
 const zodiacBaseYear = new Map(zip(zodiacSignList, zodiacSignBaseYearList));
 const zodiacSignKorean = new Map(zip(zodiacSignList, zodiacSignKoreanList));
+const serviceYearList = range(currentYear - 1, currentYear + 2);
 
 export {
   zodiacBaseYear,
   zodiacSignKorean,
   zodiacSignList,
+  currentYear,
+  serviceYearList
 };
