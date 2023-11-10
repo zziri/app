@@ -1,10 +1,9 @@
-import { getYear } from "date-fns";
+import { currentYear } from "@/data/common/commonData";
 import { toString } from "lodash-es";
 import Link from "next/link";
 
 function getDefaultCsatYear() {
-  const now = new Date();
-  return toString(getYear(now) + 1);
+  return toString(currentYear + 1);
 }
 
 interface AnchorProps {
@@ -50,7 +49,7 @@ export default function HomeFunction() {
             <Anchor href={'/extractor/password'} text={'랜덤 비밀번호 생성기'} />
         </div>
         <div className="link-item">
-            <Anchor href={'/zodiac/sign/age/dragon/2024'} text={'2024년도 용띠 나이'} />
+            <Anchor href={'/zodiac/sign/age/home'} text={'올해 띠별 나이'} />
         </div>
       </div>
 
