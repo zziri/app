@@ -20,7 +20,7 @@ export default function ZodiacSignAgeHomePage( { year }: Props) {
       <Title title={title} />
       <Description content={description} />
       <ZodiacSignAgeHomeFunction year={Number(year)}/>
-      <SeoArticle list={[]}/>
+      <SeoArticle list={[]} />
     </>
   );
 }

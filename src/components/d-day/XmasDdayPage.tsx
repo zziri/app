@@ -7,6 +7,7 @@ import Description from "../common/Description";
 import CountDownDaysFunction from "./DdayFunction";
 import EmptyDiv from "../common/EmptyDiv";
 import SeoArticle from "../common/SeoArticle";
+import dDayXmasArticleList from "@/data/d-day/xmas/article";
 
 interface Props {
   year: number;
@@ -33,7 +34,7 @@ export default function XmasDdayPage( { year }: Props) {
       <Description content={description} />
       <CountDownDaysFunction readOnly={true}/>
       <EmptyDiv height={'10rem'} />
-      <SeoArticle list={[]} />
+      <SeoArticle list={dDayXmasArticleList} />
     </>
   );
 }
