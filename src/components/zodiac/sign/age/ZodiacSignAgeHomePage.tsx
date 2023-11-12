@@ -4,6 +4,7 @@ import SeoHead from "@/components/common/SeoHead";
 import Title from "@/components/common/Title";
 import ZodiacSignAgeHomeFunction from "@/components/zodiac/sign/age/ZodiacSignAgeHomeFunction";
 import { currentYear } from "@/data/common/commonData";
+import { zodiacSignConst } from "@/data/zodiac/sign/zodiacSignData";
 import { toString } from "lodash-es";
 
 interface Props {
@@ -20,7 +21,7 @@ export default function ZodiacSignAgeHomePage( { year }: Props) {
       <Title title={title} />
       <Description content={description} />
       <ZodiacSignAgeHomeFunction year={Number(year)}/>
-      <SeoArticle list={[]} />
+      <SeoArticle list={zodiacSignConst.articleList} />
     </>
   );
 }
