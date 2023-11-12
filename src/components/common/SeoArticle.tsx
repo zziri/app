@@ -54,8 +54,8 @@ export default function SeoArticle({ list }: SeoArticleProps) {
         }
         .image {
           position: relative;
-          width: 15rem;
-          height: 15rem;
+          width: 17rem;
+          height: 17rem;
         }
         .image-box {
           display: flex;
