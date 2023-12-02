@@ -24,9 +24,7 @@
     "react-datepicker": "^4.21.0",
     "react-dom": "^18",
     "recoil": "^0.7.7",
-    "uuid": "^9.0.1",
-    "styled-components": "^6.1.1",
-    "@types/styled-components": "^5.1.32"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.10",
