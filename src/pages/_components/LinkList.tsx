@@ -28,7 +28,7 @@ const Text = styled.p`
   
 `;
 
-const LinkList = ({ items }: Props) => {
+const LinkList = ({ items = [] }: Props) => {
   const router = useRouter();
   return (
     <>
