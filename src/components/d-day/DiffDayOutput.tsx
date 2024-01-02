@@ -17,17 +17,16 @@ const Wrapper = styled.div`
 `;
 
 const Result = styled.div<{ color: string }>`
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: bold;
   color: ${props => props.color};
+  padding-top: 1rem;
+  padding-bottom: 3rem;
 `;
 
-const Base = styled.div`
+const TextWrapper = styled.div`
   font-size: 1.2rem;
-`;
-
-const Event = styled.div`
-  font-size: 1.2rem;
+  padding: 0.2rem;
 `;
 
 export default function DiffDayOutput() {
@@ -50,12 +49,12 @@ export default function DiffDayOutput() {
       <Result color={getColor(dayDiff)}>
         <span>D{getSign(dayDiff)}{Math.abs(dayDiff)}</span>
       </Result>
-      <Base>
+      <TextWrapper>
         <span>기준 날짜는 <strong>{format(now, 'yyyy년 MM월 dd일')}</strong> 입니다</span>
-      </Base>
-      <Event>
+      </TextWrapper>
+      <TextWrapper>
         <span>이벤트 날짜는 <strong>{format(diffDayTargetDate, 'yyyy년 MM월 dd일')}</strong> 입니다</span>
-      </Event>
+      </TextWrapper>
     </Wrapper>
   );
 }

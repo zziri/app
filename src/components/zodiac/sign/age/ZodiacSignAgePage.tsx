@@ -8,22 +8,6 @@ import styled from 'styled-components';
 
 const TableWrapper = styled.div`
   padding: 1rem 0;
-  table {
-    margin: 0;
-    font-size: 1.2rem;
-    width: 100%;
-    text-align: center;
-    thead {
-      th {
-        background-color: transparent;
-      }
-    }
-    tbody {
-      td, th {
-        background-color: transparent;
-      }
-    }
-  }
 `;
 
 const Table = styled.table`
