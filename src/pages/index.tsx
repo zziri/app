@@ -1,17 +1,37 @@
-import { Inter } from 'next/font/google';
 import SeoHead from '@/components/common/SeoHead';
 import Title from '@/components/common/Title';
-import HomeFunction from '@/components/home/HomeFunction';
-import styled from 'styled-components';
+import { currentYear } from '@/data/common/commonData';
+import { toString } from 'lodash-es';
+import LinkList from './_components/LinkList';
 
-const inter = Inter({ subsets: ['latin'] });
+function getDefaultCsatYear() {
+  return toString(currentYear + 1);
+}
 
-// 스타일 정의
-const StyledDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-`;
+const defaultCsatYear = getDefaultCsatYear();
+
+const items = [
+  {
+    text: '디데이 계산기',
+    url: '/calculator/d-day'
+  },
+  {
+    text: `${defaultCsatYear}학년도 수능 디데이`,
+    url: `/calculator/d-day/csat/${defaultCsatYear}`
+  },
+  {
+    text: '랜덤 숫자 뽑기',
+    url: '/extractor/random'
+  },
+  {
+    text: '랜덤 비밀번호 생성기',
+    url: '/extractor/password'
+  },
+  {
+    text: '올해 띠별 나이',
+    url: '/zodiac/sign/age/home'
+  }
+];
 
 export default function Home() {
   const title = '유용한 도구 모음';
@@ -19,8 +39,7 @@ export default function Home() {
     <>
       <SeoHead title={title} description='홈 페이지입니다.' />
       <Title title={title}/>
-      <HomeFunction />
-      <StyledDiv />
+      <LinkList items={items} />
     </>
   )
 }
