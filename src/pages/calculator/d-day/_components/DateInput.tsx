@@ -1,6 +1,6 @@
 import { diffDayTargetDateState } from "@/atoms";
 import { format } from "date-fns";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { styled } from "styled-components";
 
@@ -32,6 +32,10 @@ const Input = styled.input`
 const DateInput = () => {
   const [targetDate, setTargetDate] = useRecoilState<Date>(diffDayTargetDateState);
   const [value, setValue] = useState<string>(format(targetDate, 'yyyy-MM-dd'));
+
+  useEffect(() => {
+    setValue(format(targetDate, 'yyyy-MM-dd'));
+  }, [targetDate]);
 
   const changeDate = (e: ChangeEvent<HTMLInputElement>) => {
     let newValue = e.target.value.replace(/\D/g, '');
