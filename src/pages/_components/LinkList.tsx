@@ -33,8 +33,8 @@ const LinkList = ({ items }: Props) => {
   return (
     <>
       <Wrapper>
-        {items.map(item => {
-          return <Link onClick={() => router.push(item.url)}>
+        {items.map((item, index) => {
+          return <Link key={index} onClick={() => router.push(item.url)}>
             <Text>{item.text}</Text>
           </Link>
         })}
