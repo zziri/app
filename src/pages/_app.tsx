@@ -2,11 +2,21 @@ import NavigationBar from '@/components/common/NavigationBar';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import '@/styles/globals.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import reset, { Reset } from 'styled-reset';
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+  body {
+    margin: 0px;
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+`
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
+      <GlobalStyle />
       <NavigationBar />
       <RecoilRoot>
         <div className='app-body'>

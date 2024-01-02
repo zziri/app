@@ -1,10 +1,49 @@
 import Description from "@/components/common/Description";
-import EmptyDiv from "@/components/common/EmptyDiv";
 import SeoArticle from "@/components/common/SeoArticle";
 import SeoHead from "@/components/common/SeoHead";
 import Title from "@/components/common/Title";
 import { zodiacBaseYear, zodiacSignConst, zodiacSignKorean } from "@/data/zodiac/sign/zodiacSignData";
 import { range } from "lodash-es";
+import styled from 'styled-components';
+
+const TableWrapper = styled.div`
+  padding: 1rem 0;
+  table {
+    margin: 0;
+    font-size: 1.2rem;
+    width: 100%;
+    text-align: center;
+    thead {
+      th {
+        background-color: transparent;
+      }
+    }
+    tbody {
+      td, th {
+        background-color: transparent;
+      }
+    }
+  }
+`;
+
+const Table = styled.table`
+  margin: 0;
+  font-size: 1.2rem;
+  width: 100%;
+  text-align: center;
+`;
+
+const TableHead = styled.thead`
+  th {
+    background-color: transparent;
+  }
+`;
+
+const TableBody = styled.tbody`
+  td, th {
+    background-color: transparent;
+  }
+`;
 
 interface TableRow {
   year: number;
@@ -28,46 +67,28 @@ function getKoreanAge(birthYear: number, currentYear: number) {
 
 function ZodiacSignAgeTable({ rowList }: TableProps) {
   return (
-    <>
-      <div>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">출생연도</th>
-              <th scope="col">나이</th>
-            </tr>
-          </thead>
-          <tbody className="table-group-divider">
-            {rowList.map((row, index) => {
-              return (
-                <tr key={index}>
-                    <th scope="row">{index+1}</th>
-                    <td>{row.year}년생</td>
-                    <td>{row.age}세</td>
-                  </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-
-      <style jsx>{`
-        * {
-          background-color: transparent !important;
-        }
-        div {
-          padding: 1rem 0;
-        }
-        table {
-          margin: 0;
-          font-size: 1.2rem;
-        }
-        * {
-          text-align: center;
-        }
-      `}</style>
-    </>
+    <TableWrapper>
+      <Table>
+        <TableHead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">출생연도</th>
+            <th scope="col">나이</th>
+          </tr>
+        </TableHead>
+        <TableBody>
+          {rowList.map((row, index) => {
+            return (
+              <tr key={index}>
+                <th scope="row">{index+1}</th>
+                <td>{row.year}년생</td>
+                <td>{row.age}세</td>
+              </tr>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </TableWrapper>
   );
 }
 

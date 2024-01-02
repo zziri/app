@@ -1,21 +1,20 @@
+import styled from "styled-components";
 
 interface DescriptionProps {
   content: string;
 }
 
+const Article = styled.article`
+  line-height: 150%;
+  font-size: 1.2rem;
+`;
+
 export default function Description({ content }: DescriptionProps) {
   return (
     <>
       <div>
-        <article>{content}</article>
+        <Article>{content}</Article>
       </div>
-
-      <style jsx>{`
-        article {
-          line-height: 150%;
-          font-size: 1.2rem;
-        }
-      `}</style>
     </>
   );
 }

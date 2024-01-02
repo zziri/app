@@ -3,6 +3,7 @@ import { ko } from 'date-fns/locale';
 import { range } from 'lodash-es';
 import DatePicker from 'react-datepicker';
 import { SetterOrUpdater } from 'recoil';
+import styled from 'styled-components';
 
 interface CustomDatePickerProps {
   minDate: Date,
@@ -10,13 +11,26 @@ interface CustomDatePickerProps {
   setDate: SetterOrUpdater<Date>,
 }
 
+const Input = styled.input`
+  height: 2rem;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  border-width: 0.1rem;
+  padding-left: 1rem;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export default function CustomDatePicker({ minDate, date, setDate }: CustomDatePickerProps) {
   const years = range(getYear(minDate), getYear(minDate) + 50, 1);
   const months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
 
   return (
     <>
-      <div>
+      <Wrapper>
         <DatePicker
           renderCustomHeader={({
             date,
@@ -27,7 +41,7 @@ export default function CustomDatePicker({ minDate, date, setDate }: CustomDateP
             prevMonthButtonDisabled,
             nextMonthButtonDisabled
           }) => (
-            <div
+            <Wrapper
               style={{
                 margin: 10,
                 display: "flex",
@@ -64,7 +78,7 @@ export default function CustomDatePicker({ minDate, date, setDate }: CustomDateP
               <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
                 {">"}
               </button>
-            </div>
+            </Wrapper>
           )}
           selected={date}
           dateFormat={"yyyy-MM-dd"}
@@ -73,22 +87,9 @@ export default function CustomDatePicker({ minDate, date, setDate }: CustomDateP
             (date)}
           minDate={minDate}
           popperPlacement="top-start"
-          customInput={<input />}
+          customInput={<Input />}
         />
-      </div>
-      <style jsx>{`
-        input {
-          height: 2rem;
-          font-size: 1rem;
-          border-radius: 0.75rem;
-          border-width: 0.1rem;
-          padding-left: 1rem;
-        }
-        div {
-          display: flex;
-          flex-direction: row;
-        }
-      `}</style>
+      </Wrapper>
     </>
   );
 }

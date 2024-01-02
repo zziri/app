@@ -1,5 +1,38 @@
 import Article from "@/types/Article";
 import Image from "next/image";
+import styled from 'styled-components';
+
+const ArticleList = styled.div`
+  padding: 2rem 0;
+`;
+
+const ArticleItem = styled.div`
+  position: relative;
+`;
+
+const HeaderWrapper = styled.div`
+  padding: 0.5rem 0;
+`;
+
+const Header = styled.h2`
+  margin: 0;
+  padding-top: 2rem;
+`;
+
+const Contents = styled.div`
+  line-height: 150%;
+`;
+
+const ImageBox = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledImage = styled.div`
+  position: relative;
+  width: 17rem;
+  height: 17rem;
+`;
 
 interface SeoArticleProps {
   list: Array<Article>
@@ -7,61 +40,29 @@ interface SeoArticleProps {
 
 export default function SeoArticle({ list }: SeoArticleProps) {
   return (
-    <>
-      <div className="article-list">
-        {list.map((article, index) => {
-          return (
-            <div key={index} className="article">
-              <div className="subtitle">
-                <h2>{article.subtitle}</h2>
-              </div>
-              <div className="contents">
-                {article.contents}
-              </div>
-              <div className="image-box">
-                {article.imageSrc && article.imageAlt && (
-                  <div className="image">
-                    <Image
-                      src={article.imageSrc}
-                      alt={article.imageAlt}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </div>)}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      <style jsx>{`
-        .subtitle h2 {
-          margin: 0;
-          padding-top: 2rem;
-        }
-        .article {
-          position: relative;
-        }
-        .article-list {
-          padding: 2rem 0;
-        }
-        .article div {
-          {/* border: solid; */}
-          padding: 0.5rem 0;
-        }
-        .contents {
-          line-height: 150%;
-        }
-        .image {
-          position: relative;
-          width: 17rem;
-          height: 17rem;
-        }
-        .image-box {
-          display: flex;
-          justify-content: center;
-        }
-      `}</style>
-    </>
+    <ArticleList>
+      {list.map((article, index) => (
+        <ArticleItem key={index}>
+          <HeaderWrapper>
+            <Header>{article.subtitle}</Header>
+          </HeaderWrapper>
+          <Contents>
+            {article.contents}
+          </Contents>
+          <ImageBox>
+            {article.imageSrc && article.imageAlt && (
+              <StyledImage>
+                <Image
+                  src={article.imageSrc}
+                  alt={article.imageAlt}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </StyledImage>
+            )}
+          </ImageBox>
+        </ArticleItem>
+      ))}
+    </ArticleList>
   );
 }

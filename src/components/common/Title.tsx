@@ -1,26 +1,26 @@
+import { styled } from "styled-components";
 
 interface TitleProps {
   title: string;
 }
 
+const Wrapper = styled.div`
+  padding: 1.25rem 0;
+`;
+
+const Header = styled.h1`
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+  font-weight: bold;
+`;
+
 export default function Title({ title }: TitleProps) {
   return (
     <>
-      <div>
-        <h1>{title}</h1>
-      </div>
-
-      <style jsx>{`
-        h1 {
-          text-align: center;
-          font-size: 2rem;
-          margin: 0;
-          font-weight: bold;
-        }
-        div {
-          padding: 1.25rem 0;
-        }
-      `}</style>
+      <Wrapper>
+        <Header>{title}</Header>
+      </Wrapper>
     </>
   );
 }
