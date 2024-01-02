@@ -17,6 +17,9 @@ const HeaderWrapper = styled.div`
 const Header = styled.h2`
   margin: 0;
   padding-top: 2rem;
+  padding-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
 `;
 
 const Contents = styled.div`
