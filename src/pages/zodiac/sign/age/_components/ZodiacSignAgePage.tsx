@@ -4,40 +4,7 @@ import SeoHead from "@/components/common/SeoHead";
 import Title from "@/components/common/Title";
 import { zodiacBaseYear, zodiacSignConst, zodiacSignKorean } from "@/data/zodiac/sign/zodiacSignData";
 import { range } from "lodash-es";
-import styled from 'styled-components';
 import Table from "./Table";
-
-const TableWrapper = styled.div`
-  padding: 1rem 0;
-`;
-
-const StyledTable = styled.table`
-  margin: 0;
-  font-size: 1.2rem;
-  width: 100%;
-  text-align: center;
-`;
-
-const TableHead = styled.thead`
-  th {
-    background-color: transparent;
-  }
-`;
-
-const TableBody = styled.tbody`
-  td, th {
-    background-color: transparent;
-  }
-`;
-
-interface TableRow {
-  year: number;
-  age: number;
-}
-
-interface TableProps {
-  rowList: Array<TableRow>;
-}
 
 function getYearList(baseYear: number, currentYear: number): number[] {
   const limit = currentYear + 1;
@@ -48,33 +15,6 @@ function getKoreanAge(birthYear: number, currentYear: number) {
   const diff = currentYear - birthYear;
   const koreanAge = diff + 1;
   return koreanAge <= 0 ? 0 : koreanAge;
-}
-
-function ZodiacSignAgeTable({ rowList }: TableProps) {
-  return (
-    <TableWrapper>
-      <StyledTable>
-        <TableHead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">출생연도</th>
-            <th scope="col">나이</th>
-          </tr>
-        </TableHead>
-        <TableBody>
-          {rowList.map((row, index) => {
-            return (
-              <tr key={index}>
-                <th scope="row">{index+1}</th>
-                <td>{row.year}년생</td>
-                <td>{row.age}세</td>
-              </tr>
-            );
-          })}
-        </TableBody>
-      </StyledTable>
-    </TableWrapper>
-  );
 }
 
 function getKoreanSign(sign: string) {
@@ -108,7 +48,6 @@ export default function ZodiacSignAgePage({ year, sign }: PageProps) {
       <Title title={title} />
       <Description content={description} />
       <Table head={head} rows={rows} />
-      {/* <ZodiacSignAgeTable rowList={rowList}/> */}
       <SeoArticle list={zodiacSignConst.articleList} />
     </>
   );
