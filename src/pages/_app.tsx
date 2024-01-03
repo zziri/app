@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import '@/styles/globals.css';
 import reset, { Reset } from 'styled-reset';
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -13,42 +13,35 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+const Body = styled.div`
+  padding: 1rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Main = styled.div`
+  width: 100%;
+  max-width: 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyle />
       <NavigationBar />
       <RecoilRoot>
-        <div className='app-body'>
-          <div className='app-main'>
+        <Body>
+          <Main>
             <Component {...pageProps} />
-          </div>
-        </div>
+          </Main>
+        </Body>
       </RecoilRoot>
-
-      <style jsx global>{`
-        body {
-          {/* background-color: #EFF6FF; */}
-        }
-        .app-body {
-          padding: 1rem;
-          margin: 0;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-        .app-main {
-          width: 100%;
-          max-width: 30rem;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-        div {
-          {/* border: solid; */}
-        }
-      `}</style>
     </>
   );
 }

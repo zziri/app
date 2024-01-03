@@ -53,12 +53,10 @@ const DateInput = () => {
   }
 
   return (
-    <>
-      <Wrapper>
-        <Text>날짜를 입력해주세요</Text>
-        <Input onChange={changeDate} value={value} />
-      </Wrapper>
-    </>
+    <Wrapper>
+      <Text>날짜를 입력해주세요</Text>
+      <Input onChange={changeDate} value={value} />
+    </Wrapper>
   );
 }
 
