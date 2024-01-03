@@ -1,15 +1,6 @@
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
-interface ListItem {
-  text: string;
-  url: string;
-}
-
-interface Props {
-  items: Array<ListItem>
-}
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,6 +18,15 @@ const Link = styled.div`
 const Text = styled.p`
   
 `;
+
+interface ListItem {
+  text: string;
+  url: string;
+}
+
+interface Props {
+  items: Array<ListItem>
+}
 
 const LinkList = ({ items = [] }: Props) => {
   const router = useRouter();
