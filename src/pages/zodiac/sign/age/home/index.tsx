@@ -1,4 +1,4 @@
-import ZodiacSignAgeHomePage from "@/components/zodiac/sign/age/ZodiacSignAgeHomePage";
+import ZodiacSignAgeHomePage from "../_components/ZodiacSignAgeHomePage";
 import { currentYear } from "@/data/common/commonData";
 import { toString } from "lodash-es";
 

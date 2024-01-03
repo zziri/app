@@ -1,4 +1,4 @@
-import ZodiacSignAgePage from "@/components/zodiac/sign/age/ZodiacSignAgePage";
+import ZodiacSignAgePage from "../_components/ZodiacSignAgePage";
 import { zodiacSignList } from "@/data/zodiac/sign/zodiacSignData";
 import { getYear } from "date-fns";
 import { flatMap, range, toString } from "lodash-es";
