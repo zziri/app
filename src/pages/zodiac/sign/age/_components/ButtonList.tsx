@@ -16,7 +16,7 @@ const Button = styled.div`
   border-color: #6C757D;
   border-style: solid;
   border-width: 1px;
-  padding: 1rem;
+  padding: 0.7rem 1rem;
   cursor: pointer;
   flex: 1;
 `;

@@ -5,12 +5,13 @@ import Title from "@/components/common/Title";
 import { zodiacBaseYear, zodiacSignConst, zodiacSignKorean } from "@/data/zodiac/sign/zodiacSignData";
 import { range } from "lodash-es";
 import styled from 'styled-components';
+import Table from "./Table";
 
 const TableWrapper = styled.div`
   padding: 1rem 0;
 `;
 
-const Table = styled.table`
+const StyledTable = styled.table`
   margin: 0;
   font-size: 1.2rem;
   width: 100%;
@@ -52,7 +53,7 @@ function getKoreanAge(birthYear: number, currentYear: number) {
 function ZodiacSignAgeTable({ rowList }: TableProps) {
   return (
     <TableWrapper>
-      <Table>
+      <StyledTable>
         <TableHead>
           <tr>
             <th scope="col">#</th>
@@ -71,7 +72,7 @@ function ZodiacSignAgeTable({ rowList }: TableProps) {
             );
           })}
         </TableBody>
-      </Table>
+      </StyledTable>
     </TableWrapper>
   );
 }
@@ -98,12 +99,16 @@ export default function ZodiacSignAgePage({ year, sign }: PageProps) {
   const yearList = getYearList(getBaseYear(sign), year);
   const rowList = yearList.map(y => ({ year: y, age: getKoreanAge(y, year)}));
 
+  const head = ['#', '출생연도', '나이'];
+  const rows = yearList.map((y, i) => [`${i+1}`, `${y}년생`, `${getKoreanAge(y, year)}세`]);
+
   return (
     <>
       <SeoHead title={title} description={description} />
       <Title title={title} />
       <Description content={description} />
-      <ZodiacSignAgeTable rowList={rowList}/>
+      <Table head={head} rows={rows} />
+      {/* <ZodiacSignAgeTable rowList={rowList}/> */}
       <SeoArticle list={zodiacSignConst.articleList} />
     </>
   );
