@@ -2,7 +2,7 @@ import Description from "@/components/common/Description";
 import SeoArticle from "@/components/common/SeoArticle";
 import SeoHead from "@/components/common/SeoHead";
 import Title from "@/components/common/Title";
-import ZodiacSignAgeHomeFunction from "@/components/zodiac/sign/age/ZodiacSignAgeHomeFunction";
+import ZodiacSignAgeHomeFunction from "../_components/ZodiacSignAgeHomeFunction";
 import { currentYear } from "@/data/common/commonData";
 import { zodiacSignConst } from "@/data/zodiac/sign/zodiacSignData";
 import { toString } from "lodash-es";

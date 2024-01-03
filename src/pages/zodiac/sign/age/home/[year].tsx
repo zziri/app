@@ -1,4 +1,4 @@
-import ZodiacSignAgeHomePage from "@/components/zodiac/sign/age/ZodiacSignAgeHomePage";
+import ZodiacSignAgeHomePage from "../_components/ZodiacSignAgeHomePage";
 import { serviceYearList } from "@/data/zodiac/sign/zodiacSignData";
 import { toString } from "lodash-es";
 import { GetStaticPaths, GetStaticPropsContext, NextPage } from "next";

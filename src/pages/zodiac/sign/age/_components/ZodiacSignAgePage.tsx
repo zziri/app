@@ -4,39 +4,7 @@ import SeoHead from "@/components/common/SeoHead";
 import Title from "@/components/common/Title";
 import { zodiacBaseYear, zodiacSignConst, zodiacSignKorean } from "@/data/zodiac/sign/zodiacSignData";
 import { range } from "lodash-es";
-import styled from 'styled-components';
-
-const TableWrapper = styled.div`
-  padding: 1rem 0;
-`;
-
-const Table = styled.table`
-  margin: 0;
-  font-size: 1.2rem;
-  width: 100%;
-  text-align: center;
-`;
-
-const TableHead = styled.thead`
-  th {
-    background-color: transparent;
-  }
-`;
-
-const TableBody = styled.tbody`
-  td, th {
-    background-color: transparent;
-  }
-`;
-
-interface TableRow {
-  year: number;
-  age: number;
-}
-
-interface TableProps {
-  rowList: Array<TableRow>;
-}
+import Table from "./Table";
 
 function getYearList(baseYear: number, currentYear: number): number[] {
   const limit = currentYear + 1;
@@ -47,33 +15,6 @@ function getKoreanAge(birthYear: number, currentYear: number) {
   const diff = currentYear - birthYear;
   const koreanAge = diff + 1;
   return koreanAge <= 0 ? 0 : koreanAge;
-}
-
-function ZodiacSignAgeTable({ rowList }: TableProps) {
-  return (
-    <TableWrapper>
-      <Table>
-        <TableHead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">출생연도</th>
-            <th scope="col">나이</th>
-          </tr>
-        </TableHead>
-        <TableBody>
-          {rowList.map((row, index) => {
-            return (
-              <tr key={index}>
-                <th scope="row">{index+1}</th>
-                <td>{row.year}년생</td>
-                <td>{row.age}세</td>
-              </tr>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </TableWrapper>
-  );
 }
 
 function getKoreanSign(sign: string) {
@@ -98,12 +39,15 @@ export default function ZodiacSignAgePage({ year, sign }: PageProps) {
   const yearList = getYearList(getBaseYear(sign), year);
   const rowList = yearList.map(y => ({ year: y, age: getKoreanAge(y, year)}));
 
+  const head = ['#', '출생연도', '나이'];
+  const rows = yearList.map((y, i) => [`${i+1}`, `${y}년생`, `${getKoreanAge(y, year)}세`]);
+
   return (
     <>
       <SeoHead title={title} description={description} />
       <Title title={title} />
       <Description content={description} />
-      <ZodiacSignAgeTable rowList={rowList}/>
+      <Table head={head} rows={rows} />
       <SeoArticle list={zodiacSignConst.articleList} />
     </>
   );
