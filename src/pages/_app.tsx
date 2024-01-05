@@ -2,7 +2,7 @@ import NavigationBar from '@/components/common/NavigationBar';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import '@/styles/globals.css';
-import reset, { Reset } from 'styled-reset';
+import reset from 'styled-reset';
 import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`

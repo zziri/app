@@ -10,6 +10,7 @@ const Link = styled.div`
   color: black;
   border-bottom: 0.1rem solid #ccc;
   padding: 1rem;
+  cursor: pointer;
   &:last-child {
     border-bottom: none;
   }
