@@ -58,16 +58,6 @@ export default function RandomExtractorFunction() {
   const [count, setCount] = useState<number>(5);
   const [list, setList] = useState<Array<number>>([]);
 
-  console.log(start, end);
-
-  function onChangeStart(e: ChangeEvent<HTMLInputElement>) {
-    setStart(Number(e.target.value));
-  }
-
-  function onChangeEnd(e: ChangeEvent<HTMLInputElement>) {
-    setEnd(Number(e.target.value));
-  }
-
   function extract(e: any) {
     e.preventDefault();
 
