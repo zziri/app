@@ -18,7 +18,6 @@ export default function RandomExtractorPage() {
         description={description} />
       <Title title={title}/>
       <Description content={description} />
-      <EmptyDiv height={"2rem"} />
       <RandomExtractorFunction />
       <SeoArticle list={randomArticleList}/>
     </>
