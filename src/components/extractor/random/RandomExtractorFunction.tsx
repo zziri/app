@@ -1,3 +1,5 @@
+import EmptyDiv from "@/components/common/EmptyDiv";
+import copy from "copy-to-clipboard";
 import { isEmpty, range, shuffle, slice } from "lodash-es";
 import { ChangeEvent, useState } from "react";
 import styled from 'styled-components';
@@ -30,6 +32,7 @@ const StyledInput = styled.input`
   padding-left: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  font-size: 1rem;
 `;
 
 const StyledButton = styled.div`
@@ -51,19 +54,11 @@ const StyledButton = styled.div`
 
 export default function RandomExtractorFunction() {
   const [start, setStart] = useState<number>(1);
-  const [end, setEnd] = useState<number>(45);
-  const [count, setCount] = useState<number>(6);
+  const [end, setEnd] = useState<number>(10);
+  const [count, setCount] = useState<number>(5);
   const [list, setList] = useState<Array<number>>([]);
 
-  function onChangeStart(e: ChangeEvent<HTMLInputElement>) {
-    setStart(Number(e.target.value));
-  }
-
-  function onChangeEnd(e: ChangeEvent<HTMLInputElement>) {
-    setEnd(Number(e.target.value));
-  }
-
-  function onClickExtract(e: any) {
+  function extract(e: any) {
     e.preventDefault();
 
     const rangeList = range(start, end + 1);
@@ -78,25 +73,28 @@ export default function RandomExtractorFunction() {
 
   return (
     <Container>
+      <Result>
+        {!isEmpty(list) && <span>{list.join(', ')}</span>}
+        {isEmpty(list) && <EmptyDiv height='2rem' />}
+      </Result>
       <InputRow>
         <span>숫자 범위: </span>
-        <StyledInput type="number" onChange={onChangeStart} value={start} />
+        <StyledInput
+          type="number"
+          onChange={(e) => setStart(Number(e.target.value))}
+          value={start.toString()} />
         <span> ~ </span>
-        <StyledInput type="number" onChange={onChangeEnd} value={end} />
+        <StyledInput
+          type="number"
+          onChange={(e) => setEnd(Number(e.target.value))}
+          value={end.toString()} />
       </InputRow>
       <InputRow>
-          <span>개수:</span>
-          <StyledInput type="number" value={count} onChange={onChangeCount}/>
-          <StyledButton onClick={onClickExtract}>뽑기</StyledButton>
+        <span>개수:</span>
+        <StyledInput type="number" value={count} onChange={onChangeCount} />
+        <StyledButton onClick={extract}>뽑기</StyledButton>
+        <StyledButton onClick={() => copy(list.join(', '))}>복사</StyledButton>
       </InputRow>
-      <Result>
-        <span>
-          {!isEmpty(list) && list.map((value, index) => {
-            const suffix = (list.length - 1 === index) ? '' : ', ';
-            return `${value}${suffix}`;
-          })}
-        </span>
-      </Result>
     </Container>
   );
 }
