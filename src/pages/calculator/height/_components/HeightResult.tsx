@@ -21,6 +21,7 @@ const Heading = styled.h3`
 const Text = styled.span`
   font-size: 3.2rem;
   font-weight: bold;
+  color: blue;
 `;
 
 const HeightResult = ({ motherHeight, fatherHeight }

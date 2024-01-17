@@ -9,7 +9,11 @@ import { isNil } from "lodash-es";
 import EmptyDiv from "@/components/common/EmptyDiv";
 
 const title = '자녀 예상 키 계산기';
-const description = `자녀 예상 키 계산기 디스크립션`;
+const description = `
+자녀의 키의 예상 값을 계산할 수 있는 페이지입니다.
+엄마 키와 아빠 키를 입력하면 아들과 딸의 예상 키를 계산합니다.
+모든 키 데이터의 단위는 cm 이며 오차 범위는 5cm 이내입니다.
+`;
 
 const Wrapper = styled.div`
   display: flex;
