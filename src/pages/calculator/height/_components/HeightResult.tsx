@@ -31,11 +31,11 @@ const HeightResult = ({ motherHeight, fatherHeight }
     <>
       <Wrapper>
         <ResultItem>
-          <Heading>{'딸'}</Heading>
+          <Heading>{'여아'}</Heading>
           <Text>{((motherHeight + fatherHeight - 13) / 2.0).toFixed(1)}</Text>
         </ResultItem>
         <ResultItem>
-          <Heading>{'아들'}</Heading>
+          <Heading>{'남아'}</Heading>
           <Text>{((motherHeight + fatherHeight + 13) / 2.0).toFixed(1)}</Text>
         </ResultItem>
       </Wrapper>
