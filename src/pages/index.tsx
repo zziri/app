@@ -10,7 +10,7 @@ function getDefaultCsatYear() {
 
 const defaultCsatYear = getDefaultCsatYear();
 
-const items = [
+const links = [
   {
     text: '디데이 계산기',
     url: '/calculator/d-day'
@@ -30,7 +30,11 @@ const items = [
   {
     text: '올해 띠별 나이',
     url: '/zodiac/sign/age/home'
-  }
+  },
+  {
+    text: '자녀 예상 키 계산기',
+    url: '/calculator/height'
+  },
 ];
 
 export default function Home() {
@@ -39,7 +43,7 @@ export default function Home() {
     <>
       <SeoHead title={title} description='홈 페이지입니다.' />
       <Title title={title}/>
-      <LinkList items={items} />
+      <LinkList items={links} />
     </>
   )
 }
