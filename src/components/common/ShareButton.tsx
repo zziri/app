@@ -1,3 +1,4 @@
+import copy from "copy-to-clipboard";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -24,27 +25,18 @@ const StyledButton = styled.div`
   }
 `;
 
-interface Props {
-  text: string;
-  handleClick?: () => void;
-}
-
-const BasicButton = ({ text, handleClick }: Props) => {
+const ShareButton = () => {
   const clickHandler = () => {
-    if (!handleClick) {
-      console.log('clickHandler');
-      return;
-    }
-    handleClick();
+    copy(window.location.href);
   }
 
   return (
     <>
       <Wrapper>
-        <StyledButton onClick={clickHandler}>{text}</StyledButton>
+        <StyledButton onClick={clickHandler}>{"공유하기"}</StyledButton>
       </Wrapper>
     </>
   );
 }
 
-export default BasicButton;
+export default ShareButton;

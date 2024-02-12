@@ -1,6 +1,6 @@
 import DiffDayOutput from "@/components/d-day/DiffDayOutput";
 import DateInput from "@/pages/calculator/d-day/_components/DateInput";
-import BasicButton from "../common/BasicButton";
+import ShareButton from "../common/ShareButton";
 
 interface Props {
   readOnly?: boolean;
@@ -12,7 +12,7 @@ export default function DdayFunction({ readOnly }: Props) {
       <div>
         <DiffDayOutput />
         {!readOnly && <DateInput />}
-        <BasicButton text="공유하기" />
+        <ShareButton />
       </div>
     </>
   );
