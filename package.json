@@ -12,6 +12,7 @@
   "dependencies": {
     "@picocss/pico": "^1.5.10",
     "@types/react-datepicker": "^4.19.1",
+    "@types/react-modal": "^3.16.3",
     "@types/styled-components": "^5.1.34",
     "babel-plugin-styled-components": "^2.1.4",
     "copy-to-clipboard": "^3.3.3",
@@ -23,6 +24,7 @@
     "react-calendar": "^4.6.1",
     "react-datepicker": "^4.21.0",
     "react-dom": "^18",
+    "react-modal": "^3.16.1",
     "recoil": "^0.7.7",
     "sharp": "^0.33.1",
     "styled-components": "^6.1.3",
