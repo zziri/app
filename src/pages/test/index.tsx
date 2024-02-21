@@ -14,8 +14,6 @@ const Test = () => {
         open={open}
         title="Important Notice"
         content="This is an important message for you."
-        titleColor="darkblue" // 제목 색상
-        contentColor="darkgreen" // 내용 색상
         onClose={toggleModal} // 모달 닫기 함수
       />
     </div>

@@ -19,8 +19,8 @@ const fadeOut = keyframes`
   }
 `;
 
-const ModalOverlay = styled.div<{ show: boolean }>`
-  display: ${({ show }) => (show ? 'flex' : 'none')};
+const ModalOverlay = styled.div<{ $show: boolean }>`
+  display: ${({ $show }) => ($show ? 'flex' : 'none')};
   justify-content: center;
   align-items: start;
   position: fixed;
@@ -29,7 +29,7 @@ const ModalOverlay = styled.div<{ show: boolean }>`
   width: 100%;
   height: 100%;
   background-color: transparent;
-  animation: ${({ show }) => (show ? fadeIn : fadeOut)} 0.5s ease;
+  animation: ${({ $show }) => ($show ? fadeIn : fadeOut)} 0.5s ease;
 `;
 
 const ModalContent = styled.div`
@@ -82,8 +82,8 @@ const Notice = ({
   open,
   title,
   content,
-  titleColor,
-  contentColor,
+  titleColor = "darkblue",
+  contentColor = "darkgreen",
   onClose,
 }: Props) => {
   const [show, setShow] = useState(open);
@@ -110,7 +110,7 @@ const Notice = ({
   };
 
   return (
-    <ModalOverlay show={show} onClick={handleOverlayClick}>
+    <ModalOverlay $show={show} onClick={handleOverlayClick}>
       <ModalContent onClick={handleModalContentClick}>
         <Header>
           <Title color={titleColor}>{title}</Title>
