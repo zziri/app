@@ -1,6 +1,6 @@
 // App.tsx 또는 다른 부모 컴포넌트
 import React, { useState } from 'react';
-import { Notice } from './Notice'; // Notice 컴포넌트 임포트
+import Notice from './Notice';
 
 const Test = () => {
   const [open, setOpen] = useState(false);

@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
-interface NoticeProps {
-  open: boolean;
-  title: string;
-  content: string;
-  titleColor?: string; // 제목 색상
-  contentColor?: string; // 내용 색상
-  onClose: () => void;
-}
-
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -46,9 +37,9 @@ const ModalContent = styled.div`
   flex-direction: column;
   margin-top: 10vh; // 상단에서부터의 위치 조정, vh는 상대 단위이므로 변경하지 않음
   background-color: white;
-  padding: 1.25rem; // 20px -> 1.25rem
-  border-radius: 0.5rem; // 8px -> 0.5rem
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); // 4px -> 0.25rem, 8px -> 0.5rem
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
   width: auto;
   position: relative;
 `;
@@ -60,14 +51,14 @@ const Header = styled.div`
 `;
 
 const Title = styled.div<{ color?: string }>`
-  font-size: 1.25rem; // 20px -> 1.25rem
+  font-size: 1.25rem;
   font-weight: bold;
   ${({ color }) => color && css`color: ${color};`}
 `;
 
 const Content = styled.div<{ color?: string }>`
-  font-size: 1rem; // 16px -> 1rem
-  margin-top: 0.625rem; // 10px -> 0.625rem
+  font-size: 1rem;
+  margin-top: 0.625rem;
   ${({ color }) => color && css`color: ${color};`}
 `;
 
@@ -75,17 +66,26 @@ const CloseButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.5rem; // 24px -> 1.5rem
+  font-size: 1.5rem;
 `;
 
-export const Notice: React.FC<NoticeProps> = ({
+interface Props {
+  open: boolean;
+  title: string;
+  content: string;
+  titleColor?: string; // 제목 색상
+  contentColor?: string; // 내용 색상
+  onClose: () => void;
+}
+
+const Notice = ({
   open,
   title,
   content,
   titleColor,
   contentColor,
   onClose,
-}) => {
+}: Props) => {
   const [show, setShow] = useState(open);
 
   useEffect(() => {
@@ -121,3 +121,5 @@ export const Notice: React.FC<NoticeProps> = ({
     </ModalOverlay>
   );
 };
+
+export default Notice;
