@@ -1,4 +1,6 @@
+import { useNotice } from "@/hooks";
 import copy from "copy-to-clipboard";
+import { usePathname, useSearchParams } from "next/navigation";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -25,9 +27,15 @@ const StyledButton = styled.div`
   }
 `;
 
-const ShareButton = () => {
+const ShareButton = ({ url = window.location.href }) => {
+  const notice = useNotice();
+
   const clickHandler = () => {
-    copy(window.location.href);
+    copy(url);
+    notice({
+      title: '공유 알림',
+      content: '링크가 복사되었습니다.'
+    });
   }
 
   return (
