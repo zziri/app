@@ -78,7 +78,7 @@ interface Props {
   onClose: () => void;
 }
 
-const Notice = ({
+const NoticeTest = ({
   open,
   title,
   content,
@@ -122,4 +122,4 @@ const Notice = ({
   );
 };
 
-export default Notice;
+export default NoticeTest;
