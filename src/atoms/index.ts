@@ -6,4 +6,18 @@ const diffDayTargetDateState = atom<Date>({
   default: new Date()
 });
 
-export { diffDayTargetDateState };
+const noticeState = atom({
+  key: `noticeState_${v1()}`,
+  default: {
+    open: false,
+    title: '',
+    content: '',
+    titleColor: 'darkblue',
+    contentColor: 'darkgreen',
+  },
+});
+
+export {
+  diffDayTargetDateState,
+  noticeState,
+};

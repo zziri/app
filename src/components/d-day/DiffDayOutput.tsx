@@ -17,16 +17,16 @@ const Wrapper = styled.div`
 `;
 
 const Result = styled.div<{ color: string }>`
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: bold;
   color: ${props => props.color};
-  padding-top: 1rem;
-  padding-bottom: 3rem;
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
 `;
 
 const TextWrapper = styled.div`
-  font-size: 1.2rem;
-  padding: 0.2rem;
+  font-size: 1.1rem;
+  padding: 0.1rem;
 `;
 
 export default function DiffDayOutput() {

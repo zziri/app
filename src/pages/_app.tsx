@@ -4,6 +4,7 @@ import { RecoilRoot } from 'recoil';
 import '@/styles/globals.css';
 import reset from 'styled-reset';
 import styled, { createGlobalStyle } from 'styled-components';
+import Notice from '../components/common/Notice';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -37,6 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <NavigationBar />
       <RecoilRoot>
         <Body>
+          <Notice />
           <Main>
             <Component {...pageProps} />
           </Main>

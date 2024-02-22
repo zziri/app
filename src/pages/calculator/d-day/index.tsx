@@ -8,6 +8,7 @@ import { useRecoilState } from "recoil";
 import { diffDayTargetDateState } from "@/atoms";
 import { useEffect } from "react";
 import DdayFunction from "@/components/d-day/DdayFunction";
+import { useSearchParams } from "next/navigation";
 
 const description = `D-day를 간단하게 확인할 수 있는 디데이 계산기입니다.
 디데이(D-day)는 특정 날짜가 기준 날짜(오늘)로부터 얼마나 남았는지, 남은 일수를 뜻합니다.
@@ -15,10 +16,16 @@ const description = `D-day를 간단하게 확인할 수 있는 디데이 계산
 
 export default function CountDownDays() {
   const [, setTargetDate] = useRecoilState(diffDayTargetDateState);
-  
+  const searchParams = useSearchParams();
+  const date = searchParams.get('date');
+
   useEffect(() => {
-    setTargetDate(new Date());
-  }, []);
+    if (!date) {
+      setTargetDate(new Date());
+    } else {
+      setTargetDate(new Date(date));
+    }
+  }, [date]);
 
   return (
     <>
