@@ -35,6 +35,10 @@ const links = [
     text: '자녀 예상 키 계산기',
     url: '/calculator/height'
   },
+  {
+    text: '배란일 계산기',
+    url: '/calculator/ovulation'
+  },
 ];
 
 export default function Home() {
