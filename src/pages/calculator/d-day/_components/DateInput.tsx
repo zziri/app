@@ -1,4 +1,5 @@
 import { diffDayTargetDateState } from "@/atoms";
+import BasicInput from "@/components/common/BasicInput";
 import { format } from "date-fns";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
@@ -17,15 +18,6 @@ const Wrapper = styled.div`
 const Text = styled.p`
   font-weight: bold;
   color: blue;
-  text-align: center;
-`;
-
-const Input = styled.input`
-  font-size: 1.2rem;
-  border-radius: 1.5rem;
-  border-width: 0.1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   text-align: center;
 `;
 
@@ -55,7 +47,7 @@ const DateInput = () => {
   return (
     <Wrapper>
       <Text>날짜를 입력해주세요</Text>
-      <Input onChange={changeDate} value={value} />
+      <BasicInput onChange={changeDate} value={value} />
     </Wrapper>
   );
 }
