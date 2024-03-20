@@ -16,6 +16,7 @@ const Input = styled.input`
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
   border-radius: 1rem;
+  border-style: solid;
   &::placeholder {
     font-weight: bold;
   }
