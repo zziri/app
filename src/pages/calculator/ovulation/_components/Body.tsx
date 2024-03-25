@@ -1,8 +1,7 @@
 import BasicInput from "@/components/common/BasicInput";
-import EmptyDiv from "@/components/common/EmptyDiv";
 import styled from "styled-components";
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { format } from "date-fns";
+import { format, subDays } from "date-fns";
 
 const ResultContents = styled.div`
   display: flex;
@@ -28,6 +27,8 @@ const Header = styled.h3`
 
 const Result = styled.text`
   font-size: 1.2rem;
+  font-weight: bold;
+  color: blue;
 `;
 
 const InputWrapper = styled.div`
@@ -50,16 +51,19 @@ const Input = styled(BasicInput)`
   font-size: 1rem;
 `;
 
-const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-  if (e.key === 'Backspace' || e.key === 'Delete') {
-    console.log('Backspace or Delete key pressed');
-  }
-};
+const getOvulationDate = (menstruationDate: Date) => {
+  return format(subDays(menstruationDate, 14), 'yyyy.MM.dd');
+}
 
 const Body = () => {
-  const flag = true;
-  const [date, setDate] = useState<Date>(new Date());
-  const [value, setValue] = useState<string>(format(date, 'yyyy-MM-dd'));
+  const [baseDate, setBaseDate] = useState<Date>(new Date());
+  const [value, setValue] = useState<string>(format(baseDate, 'yyyy-MM-dd'));
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Backspace' || e.key === 'Delete') {
+      setValue(val => val.substring(0, val.length));
+    }
+  };
 
   const changeDate = (e: ChangeEvent<HTMLInputElement>) => {
     let newValue = e.target.value.replace(/\D/g, '');
@@ -72,24 +76,21 @@ const Body = () => {
     newValue = newValue.slice(0, 10);
     setValue(newValue);
     if (newValue.length === 10) {
-      setDate(new Date(newValue));
+      setBaseDate(new Date(newValue));
     }
   }
 
   return (
     <>
       <ResultContents>
-        {flag &&
-          <ResultContent>
-            <Header>배란예정일</Header>
-            <Result>2024.03.15</Result>
-          </ResultContent>}
-        {!flag &&
-          <EmptyDiv height='4rem' />}
+        <ResultContent>
+          <Header>배란예정일</Header>
+          <Result>{getOvulationDate(baseDate)}</Result>
+        </ResultContent>
       </ResultContents>
       <InputWrapper>
         <Label>다음 생리 예정일</Label>
-        <Input value={value} onChange={changeDate} onKeyDown={handleKeyDown}/>
+        <Input value={value} onChange={changeDate} onKeyDown={handleKeyDown} />
       </InputWrapper>
     </>
   );
