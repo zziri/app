@@ -1,6 +1,5 @@
 import { useNotice } from "@/hooks";
 import copy from "copy-to-clipboard";
-import { usePathname, useSearchParams } from "next/navigation";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
