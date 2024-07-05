@@ -12,7 +12,7 @@ const description = `
 적용된 생리 주기는 평균치인 28일입니다.
 `;
 
-const Height = () => {
+const Ovulation = () => {
   return (
     <>
       <SeoHead
@@ -26,4 +26,4 @@ const Height = () => {
   );
 }
 
-export default Height;
+export default Ovulation;
