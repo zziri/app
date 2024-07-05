@@ -1,13 +1,13 @@
-import BasicInput from "@/components/common/BasicInput";
 import Padding from "@/components/common/Padding";
 import { styled } from "styled-components";
+import InputWithText from "./InputWithText";
 
 const Frame = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 1rem;
+  gap: 0.7rem;
   padding-top: 2rem;
 `;
 
@@ -17,26 +17,22 @@ const Result = styled.h1`
   padding-bottom: 1rem;
 `;
 
-const Input = styled(BasicInput)`
-  width: 100%;
-  text-align: left;
-  padding-left: 1rem;
-`;
-
 const Span = styled.span`
   color: red;
 `;
 
 const CagrView = () => {
+  const cagr = 10;
+
   return (
     <>
       <Frame>
-        <Result>연평균 성장률은 <Span>10%</Span> 입니다</Result>
-        <Padding left="1rem" right="1rem">
-          <Input />
+        <Result>연평균 성장률은 <Span>{cagr}%</Span> 입니다</Result>
+        <Padding left="5rem" right="5rem">
+          <InputWithText text="일" />
         </Padding>
-        <Padding left="1rem" right="1rem">
-          <Input />
+        <Padding left="5rem" right="5rem">
+          <InputWithText text="년" />
         </Padding>
       </Frame>
     </>
