@@ -1,8 +1,7 @@
 import Padding from "@/components/common/Padding";
+import { useState } from "react";
 import { styled } from "styled-components";
 import InputWithText from "./InputWithText";
-import { useEffect, useState } from "react";
-import { set } from "date-fns";
 
 const Frame = styled.div`
   display: flex;
