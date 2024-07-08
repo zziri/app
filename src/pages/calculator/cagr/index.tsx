@@ -21,7 +21,7 @@ const CagrPage = () => {
       <Title title={title} />
       <Description content={description}/>
       <CagrView />
-      <EmptyDiv height={'5rem'}/>
+      <EmptyDiv height={'4rem'}/>
       <SeoArticle list={cagrArticleList}/>
     </>
   );
