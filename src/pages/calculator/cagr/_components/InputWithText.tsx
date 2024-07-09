@@ -10,7 +10,7 @@ const Frame = styled.div`
 
 const Input = styled(BasicInput)`
   width: 100%;
-  padding-right: 5rem; /* 오른쪽 텍스트를 위한 공간 확보 */
+  padding-right: 6rem; /* 오른쪽 텍스트를 위한 공간 확보 */
   text-align: left;
   padding-left: 1rem;
   font-size: 1rem;
