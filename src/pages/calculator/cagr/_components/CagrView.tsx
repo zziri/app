@@ -110,7 +110,7 @@ const CagrView = () => {
           <InputWithText value={start} handler={onChangeStart} text="시작값" />
         </Padding>
         <Padding left={paddingSize} right={paddingSize}>
-          <InputWithText value={end} handler={onChangeEnd} text="종료값" />
+          <InputWithText value={end} handler={onChangeEnd} text="최종값" />
         </Padding>
         <Padding left={paddingSize} right={paddingSize}>
           <InputWithText value={year} handler={onChangeYear} text="기간(년)" />

@@ -7,9 +7,8 @@ import CagrView from "./_components/CagrView";
 import { cagrArticleList } from "@/data/cagr";
 
 const title = 'CAGR 계산기';
-const description = `CAGR(Compound Annual Growth Rate)는 연평균 성장률을 뜻합니다.
-투자 수익률을 계산할 때 사용되는 지표로, 투자 수익률을 측정하는 방법 중 하나입니다.
-CAGR 계산기를 통해 투자 수익률을 쉽게 계산해보세요.`;
+const description = `CAGR 계산기를 통해 연평균 성장률을 쉽게 계산해보세요. 시작값과 최종값, 투자 기간을 입력하면 CAGR을 계산합니다.
+투자 기간은 일, 월, 년 단위 중 아무거나 입력하면 됩니다.`;
 
 const CagrPage = () => {
 
