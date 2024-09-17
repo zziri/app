@@ -23,17 +23,13 @@ const Frame = styled.div`
  * - numeral(inputString).format('0,0')
  */
 
-const start = 10000000;
-const end = 150000000;
-const step = 1000000;
+const start = 10_000_000;
+const end = 100_000_000;
+const step = 1_000_000;
 const annualSalaryList = Array.from({ length: (end - start) / step + 1 }, (_, i) => start + i * step);
 
 const Body = () => {
   const head = ['연봉', '실수령액', '공제액계', '국민연금', '건강보험', '장기요양', '고용보험', '소득세', '지방소득세'];
-  // const rows = [
-  //   ['1,000만', '771,033', '62,300', '32,990', '22,870', '1,680', '4,760', '0', '0'],
-  //   ['1,000만', '771,033', '62,300', '32,990', '22,870', '1,680', '4,760', '0', '0'],
-  // ];
   const rows = annualSalaryList.map(annualSalary => {
     const incomeTax = TaxInsuranceService.getIncomeTax(annualSalary);
     const localIncomeTax = TaxInsuranceService.getLocalIncomeTax(annualSalary);
@@ -41,8 +37,8 @@ const Body = () => {
     const healthInsurance = TaxInsuranceService.getHealthInsurance(annualSalary);
     const longTermCareInsurance = TaxInsuranceService.getLongTermCareInsurance(annualSalary);
     const employmentInsurance = TaxInsuranceService.getEmploymentInsurance(annualSalary);
-    const deduction = nationalPension + healthInsurance + longTermCareInsurance + employmentInsurance;
-    const netIncome = annualSalary - deduction - incomeTax - localIncomeTax;
+    const deduction = nationalPension + healthInsurance + longTermCareInsurance + employmentInsurance + incomeTax + localIncomeTax;
+    const netIncome = Math.floor(annualSalary / 12) - deduction;
     return [
       numeral(annualSalary).format('0,0'),
       numeral(netIncome).format('0,0'),
