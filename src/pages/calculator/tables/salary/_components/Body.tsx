@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import Table from "./Table";
-import TaxInsuranceService from "../_services/TaxInsuranceService";
+import TaxService from "../_services/TaxService";
 import numeral from 'numeral';
 
 const Frame = styled.div`
@@ -27,16 +27,17 @@ const start = 10_000_000;
 const end = 100_000_000;
 const step = 1_000_000;
 const annualSalaryList = Array.from({ length: (end - start) / step + 1 }, (_, i) => start + i * step);
+const taxService = TaxService();
 
 const Body = () => {
   const head = ['연봉', '실수령액', '공제액계', '국민연금', '건강보험', '장기요양', '고용보험', '소득세', '지방소득세'];
   const rows = annualSalaryList.map(annualSalary => {
-    const incomeTax = TaxInsuranceService.getIncomeTax(annualSalary);
-    const localIncomeTax = TaxInsuranceService.getLocalIncomeTax(annualSalary);
-    const nationalPension = TaxInsuranceService.getNationalPension(annualSalary);
-    const healthInsurance = TaxInsuranceService.getHealthInsurance(annualSalary);
-    const longTermCareInsurance = TaxInsuranceService.getLongTermCareInsurance(annualSalary);
-    const employmentInsurance = TaxInsuranceService.getEmploymentInsurance(annualSalary);
+    const incomeTax = taxService.getIncomeTax(annualSalary);
+    const localIncomeTax = taxService.getLocalIncomeTax(annualSalary);
+    const nationalPension = taxService.getNationalPension(annualSalary);
+    const healthInsurance = taxService.getHealthInsurance(annualSalary);
+    const longTermCareInsurance = taxService.getLongTermCareInsurance(annualSalary);
+    const employmentInsurance = taxService.getEmploymentInsurance(annualSalary);
     const deduction = nationalPension + healthInsurance + longTermCareInsurance + employmentInsurance + incomeTax + localIncomeTax;
     const netIncome = Math.floor(annualSalary / 12) - deduction;
     return [
