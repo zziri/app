@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import Table from "./Table";
-import TaxService from "../_services/TaxService";
 import numeral from 'numeral';
+import TaxService from "@/utils/TaxService";
 
 const Frame = styled.div`
   /* border: 1px solid #ccc; */

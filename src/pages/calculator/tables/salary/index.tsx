@@ -3,7 +3,7 @@ import SeoArticle from "@/components/common/SeoArticle";
 import SeoHead from "@/components/common/SeoHead";
 import Title from "@/components/common/Title";
 import Body from "./_components/Body";
-import salaryArticleList from "./_data/articleList";
+import salaryArticleList from "@/data/salary/salaryArticleList";
 
 const title = '연봉 실수령액표';
 const description = `
