@@ -57,25 +57,29 @@ const BodyRow = styled.tr`
   border-bottom: 2px solid #EBEBEB;
 `;
 
-const HeaderCell = styled.th<{ minWidths: number[] }>`
+interface CellProps {
+  $minWidths: number[];
+}
+
+const HeaderCell = styled.th<CellProps>`
   font-weight: bold;
   text-align: center;
   white-space: nowrap;
   padding: 0.5rem 1rem;
 
-  ${({ minWidths }) => minWidths.map((width, index) => css`
+  ${({ $minWidths }) => $minWidths.map((width, index) => css`
     &:nth-child(${index + 1}) {
       min-width: ${width}rem;
     }
   `)}
 `;
 
-const BodyCell = styled.td<{ minWidths: number[] }>`
+const BodyCell = styled.td<CellProps>`
   text-align: center;
   white-space: nowrap;
   padding: 0.5rem 1rem;
 
-  ${({ minWidths }) => minWidths.map((width, index) => css`
+  ${({ $minWidths }) => $minWidths.map((width, index) => css`
     &:nth-child(${index + 1}) {
       min-width: ${width}rem;
     }
@@ -102,7 +106,7 @@ const Table = ({ head = [], rows = [[]], minWidths = [] }: Props) => {
           <TableHead>
             <HeaderRow>
               {head.map((item, index) => (
-                <HeaderCell key={index} minWidths={minWidths}>{item}</HeaderCell>
+                <HeaderCell key={index} $minWidths={minWidths}>{item}</HeaderCell>
               ))}
             </HeaderRow>
           </TableHead>
@@ -112,7 +116,7 @@ const Table = ({ head = [], rows = [[]], minWidths = [] }: Props) => {
             {rows.map((row, rowIndex) => (
               <BodyRow key={rowIndex}>
                 {row.map((item, index) => (
-                  <BodyCell key={index} minWidths={minWidths}>{item}</BodyCell>
+                  <BodyCell key={index} $minWidths={minWidths}>{item}</BodyCell>
                 ))}
               </BodyRow>
             ))}
