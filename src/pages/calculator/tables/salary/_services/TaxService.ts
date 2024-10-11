@@ -1,17 +1,4 @@
 import taxTable from '@/data/salary/2024-tax.json';
-/**
- * @design 세금 및 보험계산기
- * - 소득세
- * - 지방소득세
- * - 국민연금
- * - 건강보험
- * - 장기요양
- * - 고용보험
- */
-
-/**
- * @design 월급 계산시 1원단위 빼고, 세금이나 보험료 계산 후에도 1원 단위 빼서 결과 리턴
- */
 
 const TaxService = (() => {
   /**
@@ -60,9 +47,12 @@ const TaxService = (() => {
   /**
    * 국민연금보험료 계산
    * - 월 급여의 4.5%로 계산
+   * - 기준소득월액 상한액 6,170,000원
    */
   const getNationalPension = (annualSalary: number) => {
-    return floor(annualSalary * 0.045 / 12);
+    const value = annualSalary * 0.045 / 12;
+    const maxValue = 6_170_000 * 0.045;
+    return floor(Math.min(value, maxValue));
   };
 
   /**
@@ -91,6 +81,7 @@ const TaxService = (() => {
 
   /**
    * 1의 자리수를 버리는 함수
+   * - 월급 계산시 1원단위 빼고, 세금이나 보험료 계산 후에도 1원 단위 빼야함
    */
   const floor = (num: number) => {
     return Math.floor(num / 10) * 10;

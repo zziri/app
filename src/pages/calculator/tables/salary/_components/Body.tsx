@@ -31,6 +31,7 @@ const taxService = TaxService();
 
 const Body = () => {
   const head = ['연봉', '실수령액', '공제액계', '국민연금', '건강보험', '장기요양', '고용보험', '소득세', '지방소득세'];
+  const minWidths = [6, 6, 6, 5, 5, 4, 4, 6, 5];
   const rows = annualSalaryList.map(annualSalary => {
     const incomeTax = taxService.getIncomeTax(annualSalary);
     const localIncomeTax = taxService.getLocalIncomeTax(annualSalary);
@@ -55,7 +56,7 @@ const Body = () => {
   return (
     <>
       <Frame>
-        <Table head={head} rows={rows}/>
+        <Table head={head} rows={rows} minWidths={minWidths}/>
       </Frame>
     </>
   );

@@ -1,7 +1,34 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { ScrollSync, ScrollSyncPane } from 'react-scroll-sync';
 
-const OverflowContainer = styled.div`
+const Frame = styled.table`
+  display: block;
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+const TableHead = styled.thead`
+  display: block;
   overflow-x: scroll;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+
+  /* 스크롤바 숨기기 */
+  ::-webkit-scrollbar {
+    display: none; /* 웹킷 기반 브라우저 (Chrome, Safari) */
+  }
+  -ms-overflow-style: none; /* IE 및 Edge */
+  scrollbar-width: none; /* Firefox */
+`;
+
+const HeaderRow = styled.tr`
+  background-color: #F3F3F3;
+`;
+
+const TableBody = styled.tbody`
+  overflow-x: scroll;
+  display: block;
 
   /* 스크롤바 스타일 */
   &::-webkit-scrollbar {
@@ -10,8 +37,8 @@ const OverflowContainer = styled.div`
 
   /* 스크롤바 트랙 스타일 (스크롤바의 배경) */
   &::-webkit-scrollbar-track {
-    /* background: #f1f1f1;
-    border-radius: 0.25rem; */
+    background: #f1f1f1;
+    border-radius: 0.25rem;
   }
 
   /* 스크롤바 핸들 스타일 (스크롤바 자체) */
@@ -26,60 +53,73 @@ const OverflowContainer = styled.div`
   }
 `;
 
-const Frame = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-`;
-
-const HeaderRow = styled.tr`
-  background-color: #F3F3F3;
-`;
-
 const BodyRow = styled.tr`
   border-bottom: 2px solid #EBEBEB;
 `;
 
-const HeaderCell = styled.th`
+const HeaderCell = styled.th<{ minWidths: number[] }>`
   font-weight: bold;
   text-align: center;
-  /* color: white; */
   white-space: nowrap;
   padding: 0.5rem 1rem;
+
+  ${({ minWidths }) => minWidths.map((width, index) => css`
+    &:nth-child(${index + 1}) {
+      min-width: ${width}rem;
+    }
+  `)}
 `;
 
-const BodyCell = styled.td`
+const BodyCell = styled.td<{ minWidths: number[] }>`
   text-align: center;
   white-space: nowrap;
   padding: 0.5rem 1rem;
+
+  ${({ minWidths }) => minWidths.map((width, index) => css`
+    &:nth-child(${index + 1}) {
+      min-width: ${width}rem;
+    }
+  `)}
 `;
 
 interface Props {
   head: Array<string>;
   rows: Array<Array<string>>;
+  minWidths: Array<number>;
 }
 
-const Table = ({ head = [], rows = [[]] }: Props) => {
+const Table = ({ head = [], rows = [[]], minWidths = [] }: Props) => {
+  // minWidths가 head보다 짧을 경우, head의 길이만큼 나머지를 0으로 채워줌
+  if (minWidths.length < head.length) {
+    const diff = head.length - minWidths.length;
+    minWidths = minWidths.concat(Array.from({ length: diff }, () => 0));
+  }
+
   return (
-    <OverflowContainer>
+    <ScrollSync>
       <Frame>
-        <thead>
-          <HeaderRow>
-            {head.map((item, index) => (
-              <HeaderCell key={index}>{item}</HeaderCell>
-            ))}
-          </HeaderRow>
-        </thead>
-        <tbody>
-          {rows.map((row, rowIndex) => (
-            <BodyRow key={rowIndex}>
-              {row.map((item, index) => (
-                <BodyCell key={index}>{item}</BodyCell>
+        <ScrollSyncPane>
+          <TableHead>
+            <HeaderRow>
+              {head.map((item, index) => (
+                <HeaderCell key={index} minWidths={minWidths}>{item}</HeaderCell>
               ))}
-            </BodyRow>
-          ))}
-        </tbody>
+            </HeaderRow>
+          </TableHead>
+        </ScrollSyncPane>
+        <ScrollSyncPane>
+          <TableBody>
+            {rows.map((row, rowIndex) => (
+              <BodyRow key={rowIndex}>
+                {row.map((item, index) => (
+                  <BodyCell key={index} minWidths={minWidths}>{item}</BodyCell>
+                ))}
+              </BodyRow>
+            ))}
+          </TableBody>
+        </ScrollSyncPane>
       </Frame>
-    </OverflowContainer>
+    </ScrollSync>
   );
 }
 
