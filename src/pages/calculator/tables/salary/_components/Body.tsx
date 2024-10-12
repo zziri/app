@@ -7,22 +7,6 @@ const Frame = styled.div`
   /* border: 1px solid #ccc; */
 `;
 
-/**
- * @design 연봉, 실수령액, ..., 지방소득세를 저장하는 타입 정의
- * - 굳이 할 필요가...?
- */
-
-/**
- * @design 세금 및 보험계산기 모듈 생성
- * - 각 세금과 보험료를 계산하는 함수를 포함
- * - 소득세, 지방소득세, 국민연금, 건강보험, 장기요양, 고용보험
- */
-
-/**
- * @design '0' 3개 마다 ',' 찍는 것은 numeral 활용
- * - numeral(inputString).format('0,0')
- */
-
 const start = 10_000_000;
 const end = 100_000_000;
 const step = 1_000_000;
