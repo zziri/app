@@ -3,6 +3,7 @@ import Title from '@/components/common/Title';
 import { currentYear } from '@/data/common/commonData';
 import { toString } from 'lodash-es';
 import LinkList from './_components/LinkList';
+import GoogleAdsense from '@/components/common/GoogleAdsense';
 
 function getDefaultCsatYear() {
   return toString(currentYear + 1);
@@ -46,7 +47,8 @@ export default function Home() {
   return (
     <>
       <SeoHead title={title} description='홈 페이지입니다.' />
-      <Title title={title}/>
+      <GoogleAdsense />
+      <Title title={title} />
       <LinkList items={links} />
     </>
   )
