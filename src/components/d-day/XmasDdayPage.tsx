@@ -22,6 +22,7 @@ export default function XmasDdayPage( { year }: Props) {
 
   useEffect(() => {
     setTargetDate(new Date(`${year}-12-25`));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

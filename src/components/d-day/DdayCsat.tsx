@@ -23,6 +23,7 @@ export default function DdayCsat({ year }: Props) {
   useEffect(() => {
     const newTargetDate = scheduleMap.get(year) || targetDate;
     setTargetDate(newTargetDate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
