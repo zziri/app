@@ -90,6 +90,7 @@ export default function PasswordExtractorFunction() {
 
   useEffect(() => {
     refreshPassword(length);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -25,6 +25,7 @@ export default function CountDownDays() {
     } else {
       setTargetDate(new Date(date));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date]);
 
   return (
