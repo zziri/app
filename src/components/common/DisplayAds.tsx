@@ -6,7 +6,11 @@ declare global {
   }
 }
 
-const DisplayAds = () => {
+interface Props {
+  height?: string;
+}
+
+const DisplayAds = ({ height = '6.25rem'}: Props) => {
   useEffect(() => {
     const pushAd = () => {
       try {
@@ -35,7 +39,7 @@ const DisplayAds = () => {
     <div>
       <ins
         className='adsbygoogle'
-        style={{ display: 'block', height: '6.25rem' }}
+        style={{ display: 'block', height }}
         data-ad-client='ca-pub-4184579550762583'
         data-ad-slot='9719302914'
         data-ad-format='horizontal'

@@ -44,6 +44,11 @@ const links = [
 
 export default function Home() {
   const title = '유용한 도구 모음';
+  if (process.env.NODE_ENV === 'development') {
+    console.log('개발환경!!');
+  } else {
+    console.log('배포환경!!');
+  }
   return (
     <>
       <SeoHead title={title} description='홈 페이지입니다.' />
