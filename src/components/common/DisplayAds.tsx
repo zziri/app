@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { styled } from 'styled-components';
 
 declare global {
   interface Window {
@@ -10,7 +11,24 @@ interface Props {
   height?: string;
 }
 
+const FakeAdsContainer = styled.div<{ height: string }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: ${({ height }) => height};
+  width: 100%;
+  background-color: #f2f2f2;
+`;
+
 const DisplayAds = ({ height = '6.25rem'}: Props) => {
+  if (process.env.NODE_ENV === 'development') {
+    return (
+      <FakeAdsContainer height={height}>
+        <div>여기에 광고가 표시됩니다.</div>
+      </FakeAdsContainer>
+    );
+  }
+
   useEffect(() => {
     const pushAd = () => {
       try {
