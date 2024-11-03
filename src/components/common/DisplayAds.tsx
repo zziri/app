@@ -21,14 +21,6 @@ const FakeAdsContainer = styled.div<{ height: string }>`
 `;
 
 const DisplayAds = ({ height = '6.25rem'}: Props) => {
-  if (process.env.NODE_ENV === 'development') {
-    return (
-      <FakeAdsContainer height={height}>
-        <div>여기에 광고가 표시됩니다.</div>
-      </FakeAdsContainer>
-    );
-  }
-
   useEffect(() => {
     const pushAd = () => {
       try {
@@ -53,6 +45,15 @@ const DisplayAds = ({ height = '6.25rem'}: Props) => {
       clearInterval(interval)
     }
   }, [])
+
+  if (process.env.NODE_ENV === 'development') {
+    return (
+      <FakeAdsContainer height={height}>
+        <div>여기에 광고가 표시됩니다.</div>
+      </FakeAdsContainer>
+    );
+  }
+
   return (
     <div>
       <ins
