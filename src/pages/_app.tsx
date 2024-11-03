@@ -1,9 +1,9 @@
-import NavigationBar from '@/components/common/NavigationBar';
+import DisplayAds from '@/components/common/DisplayAds';
+import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
-import '@/styles/globals.css';
-import reset from 'styled-reset';
 import styled, { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 import Notice from '../components/common/Notice';
 
 const GlobalStyle = createGlobalStyle`
@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyle />
-      <NavigationBar />
+      <DisplayAds height='50px'/>
       <RecoilRoot>
         <Body>
           <Notice />

@@ -1,4 +1,3 @@
-import DisplayAds from '@/components/common/DisplayAds';
 import SeoHead from '@/components/common/SeoHead';
 import Title from '@/components/common/Title';
 import { currentYear } from '@/data/common/commonData';
@@ -44,15 +43,9 @@ const links = [
 
 export default function Home() {
   const title = '유용한 도구 모음';
-  if (process.env.NODE_ENV === 'development') {
-    console.log('개발환경!!');
-  } else {
-    console.log('배포환경!!');
-  }
   return (
     <>
       <SeoHead title={title} description='홈 페이지입니다.' />
-      <DisplayAds />
       <Title title={title} />
       <LinkList items={links} />
     </>
