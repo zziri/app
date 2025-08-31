@@ -1,0 +1,122 @@
+{
+  "designSystem": {
+    "theme": {
+      "backgroundColor": "#EAF6FF", 
+      "primaryColor": "#2D9CDB",
+      "secondaryColor": "#FFFFFF",
+      "accentColor": "#000000",
+      "textColor": {
+        "primary": "#000000",
+        "secondary": "#4F4F4F",
+        "highlight": "#2D9CDB"
+      }
+    },
+    "typography": {
+      "fontFamily": "system-ui, sans-serif",
+      "title": {
+        "fontSize": 18,
+        "fontWeight": "bold",
+        "color": "#000000"
+      },
+      "body": {
+        "fontSize": 15,
+        "fontWeight": "regular",
+        "color": "#000000"
+      },
+      "caption": {
+        "fontSize": 13,
+        "color": "#4F4F4F"
+      }
+    },
+    "layout": {
+      "page": {
+        "padding": 16,
+        "spacingBetweenSections": 20
+      },
+      "chatBubble": {
+        "user": {
+          "alignment": "right",
+          "background": "#2D9CDB",
+          "textColor": "#FFFFFF",
+          "borderRadius": 12,
+          "padding": "10 14"
+        },
+        "system": {
+          "alignment": "left",
+          "background": "#FFFFFF",
+          "textColor": "#000000",
+          "borderRadius": 12,
+          "padding": "10 14",
+          "icon": {
+            "size": 32,
+            "shape": "circle",
+            "background": "#2D9CDB"
+          }
+        }
+      },
+      "buttons": {
+        "primary": {
+          "background": "#000000",
+          "textColor": "#FFFFFF",
+          "borderRadius": 12,
+          "height": 48
+        },
+        "secondary": {
+          "background": "#FFFFFF",
+          "textColor": "#000000",
+          "border": "1px solid #E0E0E0",
+          "borderRadius": 12,
+          "height": 48
+        }
+      },
+      "cards": {
+        "productCard": {
+          "background": "#FFFFFF",
+          "borderRadius": 12,
+          "shadow": true,
+          "padding": 16,
+          "elements": [
+            "thumbnail",
+            "title",
+            "price",
+            "chart"
+          ]
+        }
+      }
+    },
+    "components": {
+      "chatFlow": {
+        "type": "conversationalOnboarding",
+        "steps": [
+          "greeting",
+          "valueProposition",
+          "productExample",
+          "nicknameInput",
+          "membershipConfirmation",
+          "notificationPermission",
+          "productAddInstruction"
+        ]
+      },
+      "nicknameInput": {
+        "inputType": "text",
+        "suggestionChip": {
+          "background": "#F2F2F2",
+          "borderRadius": 12
+        }
+      },
+      "chart": {
+        "style": "lineChart",
+        "colorUp": "#27AE60",
+        "colorDown": "#EB5757",
+        "gridVisible": true
+      }
+    },
+    "interaction": {
+      "buttonStates": ["default", "pressed", "disabled"],
+      "animation": {
+        "chatAppear": "fade-in",
+        "buttonPress": "scale-down"
+      }
+    }
+  }
+}
