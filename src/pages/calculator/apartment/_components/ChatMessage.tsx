@@ -25,6 +25,7 @@ const MessageBubble = styled.div<{ $isUser: boolean }>`
   line-height: 1.4;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   word-wrap: break-word;
+  margin-right: 12px;
   
   ${props => !props.$isUser && `
     position: relative;
