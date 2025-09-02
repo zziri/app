@@ -13,6 +13,7 @@ interface CalculationInput {
 
 interface CalculationResult {
   maxLoanAmount: number;       // 최대 대출 한도
+  apartmentPrice: number;      // 아파트 가격 (LTV 70% 기준)
 }
 
 type ConversationStep = 
@@ -95,8 +96,12 @@ const ChatCalculator = () => {
         (1 - Math.pow(1 + monthlyRate, -totalMonths)) / monthlyRate;
     }
     
+    // 아파트 가격 계산 (LTV 70% 기준)
+    const apartmentPrice = Math.floor(maxLoanAmount / 0.7);
+    
     return {
-      maxLoanAmount: Math.floor(maxLoanAmount)
+      maxLoanAmount: Math.floor(maxLoanAmount),
+      apartmentPrice: apartmentPrice
     };
   };
 

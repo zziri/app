@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 interface CalculationResult {
   maxLoanAmount: number;
+  apartmentPrice: number;
 }
 
 interface ResultCardProps {
@@ -79,7 +80,7 @@ const formatNumber = (num: number): string => {
 };
 
 const ResultCard = ({ result, onReset }: ResultCardProps) => {
-  const { maxLoanAmount } = result;
+  const { maxLoanAmount, apartmentPrice } = result;
 
   return (
     <Card>
@@ -90,6 +91,15 @@ const ResultCard = ({ result, onReset }: ResultCardProps) => {
           <ResultLabel>최대 대출 한도</ResultLabel>
           <ResultValue>
             {formatNumber(maxLoanAmount)}원
+          </ResultValue>
+        </ResultItem>
+      </ResultContainer>
+      
+      <ResultContainer>
+        <ResultItem>
+          <ResultLabel>아파트 가격 (LTV 70%)</ResultLabel>
+          <ResultValue>
+            {formatNumber(apartmentPrice)}원
           </ResultValue>
         </ResultItem>
       </ResultContainer>
