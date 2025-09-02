@@ -145,6 +145,7 @@ const ChatCalculator = () => {
         }
         setInputData(prev => ({ ...prev, interestRate: numValue }));
         addMessage('system', '월 상환액 최대 한도를 설정해주세요. (만원 단위)');
+        addMessage('system', '저축하는 금액보다 작게 설정하는 것이 좋아요.');
         setCurrentStep('monthly_payment_input');
         break;
 
