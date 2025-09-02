@@ -38,3 +38,6 @@ idea.
 
 yarn.lock
 
+# docs directory
+docs/
+
