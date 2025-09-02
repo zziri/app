@@ -5,8 +5,8 @@ import SeoHead from "@/components/common/SeoHead";
 import Title from "@/components/common/Title";
 import ChatCalculator from "./_components/ChatCalculator";
 
-const title = '아파트 매수 가능 가격 계산기';
-const description = `아파트 매수 가능 가격을 계산해보세요. 소득과 자본금을 입력하면 DSR, LTV 기준으로 매수할 수 있는 최대 아파트 가격을 알려드립니다. 대화형 챗봇을 통해 쉽고 빠르게 계산할 수 있습니다.`;
+const title = '최대 대출 한도 계산기';
+const description = `최대 대출 가능 금액을 계산해보세요. 대출 기간, 대출 금리, 월 상환액을 입력하면 대출 가능한 최대 한도를 알려드립니다. 대화형 챗봇을 통해 쉽고 빠르게 계산할 수 있습니다.`;
 
 const ApartmentCalculatorPage = () => {
   return (

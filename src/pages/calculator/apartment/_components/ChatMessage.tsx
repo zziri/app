@@ -91,7 +91,7 @@ const ChatMessage = ({ message }: ChatMessageProps) => {
         </MessageBubble>
       ) : (
         <SystemMessageWrapper>
-          <SystemIcon>🏠</SystemIcon>
+          <SystemIcon>💰</SystemIcon>
           <MessageBubble $isUser={isUser}>
             {content}
           </MessageBubble>

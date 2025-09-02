@@ -1,13 +1,7 @@
 import { styled } from "styled-components";
 
 interface CalculationResult {
-  maxApartmentPrice: number;
-  requiredCapital: number;
-  loanAmount: number;
-  monthlyPayment: number;
-  actualDSR: number;
-  actualLTV: number;
-  warnings: string[];
+  maxLoanAmount: number;
 }
 
 interface ResultCardProps {
@@ -31,59 +25,31 @@ const Title = styled.h3`
   text-align: center;
 `;
 
-const ResultGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+const ResultContainer = styled.div`
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
-  
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-  }
 `;
 
 const ResultItem = styled.div`
-  padding: 16px;
+  padding: 24px;
   background-color: #F8F9FA;
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid #E9ECEF;
+  text-align: center;
+  min-width: 300px;
 `;
 
 const ResultLabel = styled.div`
-  font-size: 13px;
-  color: #4F4F4F;
-  margin-bottom: 4px;
-`;
-
-const ResultValue = styled.div<{ $highlight?: boolean }>`
   font-size: 16px;
-  font-weight: bold;
-  color: ${props => props.$highlight ? '#2D9CDB' : '#000000'};
-`;
-
-const WarningSection = styled.div`
-  margin: 20px 0;
-`;
-
-const WarningTitle = styled.div`
-  font-size: 14px;
-  font-weight: bold;
-  color: #EB5757;
+  color: #4F4F4F;
   margin-bottom: 8px;
 `;
 
-const WarningItem = styled.div`
-  padding: 8px 12px;
-  background-color: #FFF5F5;
-  border: 1px solid #FEB2B2;
-  border-radius: 6px;
-  color: #C53030;
-  font-size: 14px;
-  margin-bottom: 4px;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
+const ResultValue = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+  color: #2D9CDB;
 `;
 
 const ButtonContainer = styled.div`
@@ -113,74 +79,20 @@ const formatNumber = (num: number): string => {
 };
 
 const ResultCard = ({ result, onReset }: ResultCardProps) => {
-  const {
-    maxApartmentPrice,
-    requiredCapital,
-    loanAmount,
-    monthlyPayment,
-    actualDSR,
-    actualLTV,
-    warnings
-  } = result;
+  const { maxLoanAmount } = result;
 
   return (
     <Card>
       <Title>💰 계산 결과</Title>
       
-      <ResultGrid>
+      <ResultContainer>
         <ResultItem>
-          <ResultLabel>최대 매수 가능 가격</ResultLabel>
-          <ResultValue $highlight>
-            {formatNumber(maxApartmentPrice)}만원
-          </ResultValue>
-        </ResultItem>
-        
-        <ResultItem>
-          <ResultLabel>필요한 자본금</ResultLabel>
+          <ResultLabel>최대 대출 한도</ResultLabel>
           <ResultValue>
-            {formatNumber(requiredCapital)}만원
+            {formatNumber(maxLoanAmount)}원
           </ResultValue>
         </ResultItem>
-        
-        <ResultItem>
-          <ResultLabel>대출 금액</ResultLabel>
-          <ResultValue>
-            {formatNumber(loanAmount)}만원
-          </ResultValue>
-        </ResultItem>
-        
-        <ResultItem>
-          <ResultLabel>월 상환액</ResultLabel>
-          <ResultValue>
-            {formatNumber(monthlyPayment)}원
-          </ResultValue>
-        </ResultItem>
-        
-        <ResultItem>
-          <ResultLabel>실제 DSR</ResultLabel>
-          <ResultValue style={{ color: actualDSR > 40 ? '#EB5757' : '#27AE60' }}>
-            {actualDSR.toFixed(2)}%
-          </ResultValue>
-        </ResultItem>
-        
-        <ResultItem>
-          <ResultLabel>실제 LTV</ResultLabel>
-          <ResultValue style={{ color: actualLTV > 80 ? '#EB5757' : '#27AE60' }}>
-            {actualLTV.toFixed(2)}%
-          </ResultValue>
-        </ResultItem>
-      </ResultGrid>
-      
-      {warnings.length > 0 && (
-        <WarningSection>
-          <WarningTitle>⚠️ 주의사항</WarningTitle>
-          {warnings.map((warning, index) => (
-            <WarningItem key={index}>
-              {warning}
-            </WarningItem>
-          ))}
-        </WarningSection>
-      )}
+      </ResultContainer>
       
       <ButtonContainer>
         <Button onClick={onReset}>
